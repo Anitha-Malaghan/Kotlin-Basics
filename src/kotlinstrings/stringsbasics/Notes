@@ -1,0 +1,95 @@
+Kotlin Strings
+--------------------------------------------------------------
+-Strings are used for storing text.
+
+-A string contains a collection of characters surrounded by double quotes:
+
+    var greeting = "Hello"
+
+-Unlike Java, you do not have to specify that the variable should be a String.
+
+-Kotlin is smart enough to understand that the greeting variable in the example above is a String
+ because of the double quotes.
+
+-However, just like with other data types, you can specify the type if you insist:
+
+    var greeting: String = "Hello"
+
+------------------------------------------------------------------------------------------------------
+Note: If you want to create a String without assigning the value (and assign the value later),
+you must specify the type while declaring the variable:
+------------------------------------------------------------------------------------------------------
+
+        var name: String
+        name = "John"
+        println(name)
+
+    This will generate an error:
+
+        var name
+        name = "John"
+        println(name)
+
+------------------------------------------------------------------------------------------------
+Access a String
+------------------------------------------------------------------------------------------------
+
+-To access the characters (elements) of a string, we must refer to the index number inside square brackets.
+
+-String indexes start with 0. In the example below, we access the first and third element in txt:
+
+    var txt = "Hello World"
+    println(txt[0]) // first element (H)
+    println(txt[2]) // third element (l)
+
+-[0] is the first element. [1] is the second element, [2] is the third element, etc.
+
+
+-----------------------------------------------------------------------------------------
+String Length
+-----------------------------------------------------------------------------------------
+-A String in Kotlin is an object, which contain properties and functions that can perform certain
+ operations on strings, by writing a dot character (.) after the specific string variable.
+
+-For example, the length of a string can be found with the length property:
+
+    var txt = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+    println("The length of the txt string is: " + txt.length)
+
+----------------------------------------------------------------------------------------------------------
+Quotes Inside a String
+-----------------------------------------------------------------------------------------------------------
+-To use quotes inside a string, use single quotes ('):
+
+    var txt1 = "It's alright"
+    var txt2 = "That's great"
+
+----------------------------------------------------------------------------------------------------------
+String Concatenation
+----------------------------------------------------------------------------------------------------------
+-The + operator can be used between strings to add them together to make a new string. This is called concatenation:
+
+    var firstName = "John"
+    var lastName = "Doe"
+    println(firstName + " " + lastName)
+
+-Note that we have added an empty text (" ") to create a space between firstName and lastName on print.
+
+---------------------------------------------------------------------------------------------------------
+String Templates/Interpolation
+---------------------------------------------------------------------------------------------------------
+
+Instead of concatenation, you can also use "string templates", which is an easy way to add
+variables and expressions inside a string.
+
+Just refer to the variable with the $ symbol:
+
+var firstName = "John"
+var lastName = "Doe"
+println("My name is $firstName $lastName")
+
+"String Templates" is a popular feature of Kotlin, as it reduces the amount of code.
+For example, you do not have to specify a whitespace between firstName and lastName,
+like we did in the concatenation example.
+
+

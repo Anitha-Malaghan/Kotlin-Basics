@@ -1,0 +1,184 @@
+Array Methods
+----------------------------
+-Kotlin provides a rich set of methods for working with arrays.
+
+-These methods make it easy to perform common tasks such as creating, transforming, and querying arrays.
+----------------------------------------------------------------------------------------------------
+Here’s a comprehensive list of array methods in Kotlin:
+----------------------------------------------------------------------------------------------------
+-------------------------
+Array Creation
+-------------------------
+    1. arrayOf(vararg elements: T):
+    ---------------------------------------
+        Creates an array containing the specified elements.
+
+    2. Array(size: Int, init: (Int) -> T):
+    ---------------------------------------
+        Creates an array of the specified size with elements initialized by the provided lambda function.
+
+    3. intArrayOf(vararg elements: Int):
+     ---------------------------------------
+        Creates an IntArray containing the specified integers.
+
+    4. doubleArrayOf(vararg elements: Double):
+    ---------------------------------------
+        Creates a DoubleArray containing the specified doubles.
+
+    5. charArrayOf(vararg elements: Char):
+    ---------------------------------------
+        Creates a CharArray containing the specified characters.
+
+    6. booleanArrayOf(vararg elements: Boolean):
+    -------------------------------------------
+        Creates a BooleanArray containing the specified booleans.
+
+    7. byteArrayOf(vararg elements: Byte):
+     ---------------------------------------
+        Creates a ByteArray containing the specified bytes.
+
+    8. shortArrayOf(vararg elements: Short):
+    ---------------------------------------
+        Creates a ShortArray containing the specified shorts.
+
+    9. longArrayOf(vararg elements: Long):
+    ---------------------------------------
+        Creates a LongArray containing the specified longs.
+
+    10. floatArrayOf(vararg elements: Float):
+     ---------------------------------------
+        Creates a FloatArray containing the specified floats.
+
+-------------------------------------
+Element Access and Modification
+-------------------------------------
+    1. get(index: Int):
+    ---------------------------
+        Returns the element at the specified index.
+    2. set(index: Int, value: T):
+    ---------------------------
+        Replaces the element at the specified index with the given value.
+    3. []:
+    ---------------------------
+    Operator to get or set elements (e.g., array[index], array[index] = value).
+
+---------------------------------------
+Iteration
+---------------------------------------
+    1.forEach(action: (T) -> Unit):
+    --------------------------------
+        Performs the given action on each element.
+
+    2.forEachIndexed(action: (index: Int, T) -> Unit):
+    ---------------------------------------------------
+        Performs the given action on each element, providing sequential index with the element.
+-------------------------------------------
+Searching
+-------------------------------------------
+    1. contains(element: T):
+    ---------------------------
+        Checks if the array contains the specified element.
+
+    2. indexOf(element: T):
+    ---------------------------
+        Returns the first index of the specified element, or -1 if the element is not found.
+
+    3. lastIndexOf(element: T):
+    ---------------------------
+        Returns the last index of the specified element, or -1 if the element is not found.
+
+    4. indexOfFirst(predicate: (T) -> Boolean):
+    --------------------------------------------
+        Returns the index of the first element matching the given predicate, or -1 if no such element was found.
+
+    5. indexOfLast(predicate: (T) -> Boolean):
+    --------------------------------------------
+        Returns the index of the last element matching the given predicate, or -1 if no such element was found.
+
+-------------------------------------------
+Sorting
+-------------------------------------------
+    1. sort():
+    ---------------------------
+        Sorts the array in-place.
+
+    2. sortedArray():
+    ---------------------------
+        Returns a new array with elements sorted.
+
+    3. sortDescending():
+    ---------------------------
+        Sorts the array in descending order in-place.
+
+    4. sortedArrayDescending():
+    ---------------------------
+        Returns a new array with elements sorted in descending order.
+------------------------------------------------------------------
+Filtering and Transformation
+------------------------------------------------------------------
+    1. filter(predicate: (T) -> Boolean):
+    -------------------------------------------------------
+        Returns a list containing only elements matching the given predicate.
+
+    2. filterIndexed(predicate: (index: Int, T) -> Boolean):
+    --------------------------------------------------------
+        Returns a list containing only elements matching the given predicate, with the predicate taking the index of the element.
+
+    3. map(transform: (T) -> R):
+    --------------------------------------------------------
+        Returns a list containing the results of applying the given transform function to each element.
+
+    4. mapIndexed(transform: (index: Int, T) -> R):
+    --------------------------------------------------------
+        Returns a list containing the results of applying the given transform function to each element, with the transform function taking the index of the element.
+
+
+-------------------------------------------
+Aggregation
+-------------------------------------------
+1. sum():
+-------------------------------
+    Returns the sum of all elements.
+
+2. sumBy(selector: (T) -> Int):
+-------------------------------
+    Returns the sum of all values produced by selector function applied to each element.
+
+3. average():
+-------------------------------
+    Returns the average of all elements.
+
+4. max():
+-------------------------------
+    Returns the largest element.
+
+5. min():
+-------------------------------
+    Returns the smallest element.
+
+-------------------------------------------
+Conversion
+-------------------------------------------
+    1. toList():
+    ----------------------
+        Converts the array to a list.
+
+    2. toMutableList():
+    ----------------------
+        Converts the array to a mutable list.
+
+    3. toTypedArray():
+    ----------------------
+        Converts the array to a typed array (useful for primitive arrays).
+-------------------------------------------
+Miscellaneous
+-------------------------------------------
+    1. isEmpty():
+    ------------------
+        Checks if the array is empty.
+    2.  isNotEmpty():
+    ------------------
+        Checks if the array is not empty.
+    3. size:
+    ------------------
+        Returns the number of elements in the array.

@@ -1,0 +1,30 @@
+------------------------------------------------------
+    Type Conversion
+------------------------------------------------------
+    Type conversion is when you convert the value of one data type to another type.
+
+    In Kotlin, numeric type conversion is different from Java.
+
+    For example, it is not possible to convert an Int type to a Long type with the following code:
+
+    Example
+    val x: Int = 5
+    val y: Long = x
+    ---------------------------------------
+    println(y) // Error: Type mismatch
+    ---------------------------------------
+
+    To convert a numeric data type to another type, you must use one of the following functions:
+
+    toByte(),
+    toShort(),
+    toInt(),
+    toLong(),
+    toFloat(),
+    toDouble()
+    toChar():
+
+        val x: Int = 5
+        val y: Long = x.toLong()
+        println(y)
+

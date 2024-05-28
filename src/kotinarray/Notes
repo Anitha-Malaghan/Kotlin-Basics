@@ -1,0 +1,100 @@
+Kotlin Array
+-----------------------------------------
+-Arrays are used to store multiple values in a single variable, instead of creating separate variables
+ for each value.
+
+-In Kotlin, arrays are a collection of elements of the same type.
+
+-They are created using the arrayOf function or specific array classes for primitive types.
+-----------------------------------------------
+Operations on Array
+-----------------------------------------------
+
+    1. Creating Arrays
+    ------------------------------------------
+
+        1. Using arrayOf function:
+        --------------------------------
+            val numbers = arrayOf(1, 2, 3, 4, 5)
+            val strings = arrayOf("one", "two", "three")
+
+        2.Using specific array classes:
+        ---------------------------------
+        IntArray, DoubleArray, FloatArray, etc., for primitive types.
+            val intArray = intArrayOf(1, 2, 3, 4, 5)
+            val doubleArray = doubleArrayOf(1.1, 2.2, 3.3)
+
+        3.Using the Array constructor:
+        -------------------------------
+            val array = Array(5) { i -> i * 2 } // Creates an array of [0, 2, 4, 6, 8]
+
+
+    ---------------------------------------------------------
+    2. Accessing and Modifying Array Elements
+    -------------------------------------------------------------
+        Accessing elements:
+        --------------------
+            val numbers = arrayOf(1, 2, 3, 4, 5)
+            println(numbers[0]) // Output: 1
+            println(numbers[1]) // Output: 2
+
+        Modifying elements:
+        ---------------------
+            val numbers = arrayOf(1, 2, 3, 4, 5)
+            numbers[0] = 10
+            println(numbers[0]) // Output: 10
+
+
+    --------------------------------------
+    3. Iteration over array elements:
+    -------------------------------------
+
+            val numbers = arrayOf(1, 2, 3, 4, 5)
+            for (number in numbers) {
+                println(number)
+            }
+
+            //Using forEach function:
+
+            numbers.forEach { println(it) }
+
+    ---------------------------------------
+    4.Searching in an Array
+    ---------------------------------------
+        val containsThree = array.contains(3) // Checking if the array contains the value 3
+        val indexOfFour = array.indexOf(4) // Finding the index of the value 4
+
+    --------------------------------------
+    5.Sorting an Array
+    --------------------------------------
+        val sortedArray = array.sortedArray() // Sorting the array
+
+    -------------------------------------
+    6.Filtering an Array
+    -------------------------------------
+        val filteredArray = array.filter { it > 2 } // Selecting elements greater than 2
+
+    -------------------------------------
+    7.Transforming an Array
+    -------------------------------------
+        val doubledArray = array.map { it * 2 } // Creating a new array with each element doubled
+
+------------------------------------
+Immutable Arrays
+------------------------------------
+To declare an array as immutable, you can use val to ensure that the reference to the
+array cannot be changed, although the elements within the array can still be modified.
+
+    val immutableArray = arrayOf(1, 2, 3)
+    immutableArray[0] = 10 // This is allowed
+    // immutableArray = arrayOf(4, 5, 6) // This is not allowed
+
+--------------------------
+Conclusion
+--------------------------
+Kotlin provides a variety of ways to work with arrays, making it easy to create, modify, and
+iterate through collections of elements. Whether using the arrayOf function, specific array classes,
+or the Array constructor, Kotlin arrays are versatile and useful for many programming tasks
+
+
+

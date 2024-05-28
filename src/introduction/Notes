@@ -1,0 +1,71 @@
+Kotlin:
+--------------------------------------------------
+
+-Kotlin is a modern, statically-typed programming language that runs on the Java
+Virtual Machine (JVM)
+
+-It can also be compiled to JavaScript or native code.
+
+-It was released in 2016 by JetBrain.
+
+-Kotlin is designed to be fully interoperable with Java, allowing developers to use existing Java libraries
+ and frameworks while offering a more concise, expressive, and safe syntax.
+
+-------------------------------------------------------
+Usage:
+-------------------------------------------------------
+-Kotlin is widely used for
+
+-Mobile applications (specially Android apps)
+-Web development
+-Server side applications
+-Data science
+-And much, much more!
+
+-Its popularity has been growing rapidly due to its modern features and seamless integration with existing Java ecosystems.
+
+-----------------------------------------------------
+Why Use Kotlin?
+----------------------------------------------------
+-Kotlin is fully compatible with Java
+
+-Kotlin works on different platforms (Windows, Mac, Linux, Raspberry Pi, etc.)
+
+-Kotlin is concise and safe
+
+-Kotlin is easy to learn, especially if you already know Java
+
+-Kotlin is free to use
+
+-Big community/support
+------------------------------------------------
+Kotlin IDE
+------------------------------------------------
+
+-The easiest way to get started with Kotlin, is to use an IDE.
+
+-An IDE (Integrated Development Environment) is used to edit and compile code.
+
+----------------------------------------------
+example:
+----------------------------------------------
+
+fun main(){
+    println("Hello Kotlin");
+}
+
+Before Kotlin version 1.3, it was required to use the main() function with parameters,
+like: fun main(args : Array<String>).
+----------------------------------------------
+Comment lines in Kotlin
+----------------------------------------------
+Single line comment -//
+
+Multiline comment  - /* */
+
+
+
+
+
+
+

@@ -1,0 +1,75 @@
+Kotlin Break/Continue
+--------------------------------------------------
+-In Kotlin, break and continue statements are used to control the flow of loops.
+
+--------------------------------------------------
+break Statement
+-------------------------------------------------
+-The break statement is used to terminate the nearest enclosing loop immediately.
+
+-When break is executed, the loop is exited, and control moves to the statement immediately following the loop.
+
+    Example:
+    --------------
+    fun main() {
+        for (i in 1..10) {
+            if (i == 5) {
+                break
+            }
+            println(i)
+        }
+        println("Loop terminated.")
+    }
+
+-----------------------------------------------------------------------
+Continue Statement
+-----------------------------------------------------------------------
+-The continue statement is used to skip the current iteration of the nearest
+
+enclosing loop and proceed to the next iteration.
+
+        Example:
+        -------------
+        fun main() {
+            for (i in 1..10) {
+                if (i == 5) {
+                    continue
+                }
+                println(i)
+            }
+        }
+
+----------------------------------------------------
+Using break and continue with Labels
+----------------------------------------------------
+
+-In Kotlin, you can label loops and use the label with break and continue to specify which loop to break
+or continue.
+
+    Example with labeled break
+    ----------------------------
+    fun main() {
+        loop@ for (i in 1..5) {
+            for (j in 1..5) {
+                if (j == 3) {
+                    break@loop
+                }
+                println("i = $i, j = $j")
+            }
+        }
+        println("Outer loop terminated.")
+    }
+
+
+    Example with labeled continue
+    -------------------------------------
+    fun main() {
+        outer@ for (i in 1..5) {
+            for (j in 1..5) {
+                if (j == 3) {
+                    continue@outer
+                }
+                println("i = $i, j = $j")
+            }
+        }
+    }

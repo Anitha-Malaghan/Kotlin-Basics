@@ -1,0 +1,106 @@
+--------------------------------------------
+Kotlin Variables
+--------------------------------------------
+Variables are containers for storing data values.
+
+To create a variable, use var or val, and assign a value to it with the equal sign (=):
+
+    Syntax
+    ---------------
+    var variableName = value
+    val variableName = value
+
+    Example
+    -------------
+    var name = "John"
+    val birthyear = 1975
+
+    println(name)          // Print the value of name
+    println(birthyear)     // Print the value of birthyear
+
+
+    The difference between var and val is that variables declared with the var keyword can be changed/modified,
+    while val variables cannot.
+---------------------------------
+Variable Type
+---------------------------------
+Unlike many other programming languages, variables in Kotlin do not need to be declared with a specified type
+(like "String" for text or "Int" for numbers, if you are familiar with those).
+
+To create a variable in Kotlin that should store text and another that should store a number,
+look at the following example:
+
+Example
+
+var name = "John"      // String (text)
+val birthyear = 1975   // Int (number)
+
+Kotlin is smart enough to understand that "John" is a String (text), and that 1975 is an Int (number) variable.
+
+However, it is possible to specify the type if you insist:
+
+Example
+var name: String = "John" // String
+val birthyear: Int = 1975 // Int
+
+
+You can also declare a variable without assigning the value, and assign the value later.
+However, this is only possible when you specify the type:
+
+
+var name: String
+name = "John"
+println(name)
+
+---------------------------------------------------------------------------------------
+When you create a variable with the val keyword, the value cannot be changed/reassigned.
+---------------------------------------------------------------------------------------
+val name = "John"
+name = "Robert"  // Error (Val cannot be reassigned)
+println(name)
+
+--------------------------------------------------------------------------------------
+When using var, you can change the value whenever you want:
+--------------------------------------------------------------------------------------
+var name = "John"
+name = "Robert"
+println(name)
+
+--------------------------------------------------------------------------------------
+So When To Use val?
+--------------------------------------------------------------------------------------
+The val keyword is useful when you want a variable to always store the same value, like PI (3.14159...):
+
+val pi = 3.14159265359
+
+-----------------------------------------
+Display Variables
+-----------------------------------------
+Like you have seen with the examples above, the println() method is often used to display variables.
+
+To combine both text and a variable, use the + character:
+
+val name = "John"
+println("Hello " + name)
+
+----------------------------------------------------------------------------
+Variable Names
+-----------------------------------------------------------------------------
+A variable can have a short name (like x and y) or more descriptive names (age, sum, totalVolume).
+
+The general rule for Kotlin variables are:
+
+Names can contain letters, digits, underscores, and dollar signs
+
+Names should start with a letter
+
+Names can also begin with $ and _ (but we will not use it in this tutorial)
+
+Names are case sensitive ("myVar" and "myvar" are different variables)
+
+Names should start with a lowercase letter and it cannot contain whitespace
+
+Reserved words (like Kotlin keywords, such as var or String) cannot be used as names
+camelCase variables
+
+You might notice that we used firstName and lastName as variable names in the example above, instead of firstname and lastname. This is called "camelCase", and it is considered as good practice as it makes it easier to read when you have a variable name with different words in it, for example "myFavoriteFood", "rateActionMovies" etc.
