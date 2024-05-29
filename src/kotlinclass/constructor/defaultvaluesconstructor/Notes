@@ -1,0 +1,16 @@
+Default Values for Constructor Parameters
+---------------------------------------------------------------------------------------------------------------
+-Kotlin allows you to specify default values for constructor parameters, reducing the
+need for multiple constructors.
+
+    Example:
+    ----------
+    class User(val name: String, val age: Int = 18)
+
+    fun main() {
+        val user1 = User("Dave", 25)
+        println("Name: ${user1.name}, Age: ${user1.age}")
+
+        val user2 = User("Eve")
+        println("Name: ${user2.name}, Age: ${user2.age}")
+    }

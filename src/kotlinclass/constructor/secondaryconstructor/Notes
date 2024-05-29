@@ -1,0 +1,46 @@
+------------------------------------------------------------------------------------------------------------
+2. Secondary Constructors
+------------------------------------------------------------------------------------------------------------
+-Secondary constructors are useful when you need multiple ways to initialize a class.
+
+-They are defined using the constructor keyword and must delegate to the primary constructor (if it exists).
+
+-Kotlin supports secondary constructors, which are useful when you need more flexibility in
+ constructing instances.
+
+    Example:
+    -------------
+    class Person {
+        var name: String
+        var age: Int
+
+        constructor(name: String) {
+            this.name = name
+            this.age = 0
+        }
+
+        constructor(name: String, age: Int) {
+            this.name = name
+            this.age = age
+        }
+    }
+
+-------
+Or
+-------
+class Person {
+    var name: String
+    var age: Int
+
+    // Primary constructor
+    constructor(name: String, age: Int) {
+        this.name = name
+        this.age = age
+    }
+
+    // Secondary constructor
+    constructor(name: String) : this(name, 0) {
+        println("Person initialized with name = $name and default age = $age")
+    }
+}
+Secondary constructors must delegate to the primary constructor (if present) using the this keyword.

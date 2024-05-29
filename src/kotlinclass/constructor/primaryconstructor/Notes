@@ -1,0 +1,22 @@
+-------------------------------------------------------------------------------------------------------------
+1. Primary Constructor
+-------------------------------------------------------------------------------------------------------------
+ -The primary constructor is a concise way to define and initialize properties directly in the class header.
+
+    Example
+    ---------
+        class Person(val name: String, var age: Int)
+
+        -val name: String and var age: Int are properties of the Person class.
+
+        -The primary constructor initializes these properties.
+
+    Example with Initialization Logic:
+    -----------------------------------
+        If you need to include initialization logic, you can use the init block:
+
+        class Person(val name: String, var age: Int) {
+            init {
+                println("Person initialized with name = $name and age = $age")
+            }
+        }

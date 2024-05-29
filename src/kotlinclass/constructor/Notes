@@ -1,0 +1,123 @@
+----------------------------------------------------------------------------------------------------------
+Kotlin Constructor
+-----------------------------------------------------------------------------------------------------------
+-In Kotlin, constructors are an essential part of defining and initializing classes.
+
+-Kotlin provides a more streamlined and flexible approach to constructors compared to Java.
+
+    Example
+    ---------------
+    class Car {
+        var brand = ""
+        var model = ""
+        var year = 0
+    }
+
+    fun main() {
+        val c1 = Car()
+        c1.brand = "Ford"
+        c1.model = "Mustang"
+        c1.year = 1969
+    }
+
+-In Kotlin, there's a faster way of doing this, by using a constructor.
+
+-A constructor is like a special function, and it is defined by using two parantheses () after the class name.
+ You can specify the properties inside of the parantheses.
+
+The constructor will initialize the properties when you create an object of a class.
+
+----------------------------------------------------------------------------------------------------------------
+Constructors
+----------------------------------------------------------------------------------------------------------------
+Primary Constructor: Defined in the class header, initializes properties.
+--------------------
+
+Secondary Constructors: Provide flexibility, must delegate to the primary constructor.
+----------------------
+
+Default Values: Simplify constructor overloading.
+--------------
+
+Visibility Modifiers: Control constructor access.
+--------------------
+
+Super Constructors: Ensure proper initialization in inheritance hierarchies.
+------------------
+
+
+-------------------------------------------------------------------------------------------------------------
+Calling a Constructor from a Superclass
+-------------------------------------------------------------------------------------------------------------
+When a class inherits from another class, it must call the constructor of the superclass:
+
+    open class Animal(val name: String)
+
+    class Dog(name: String, val breed: String) : Animal(name)
+
+------------------------------------------------------------------------------------------------------------
+Example with Complex Initialization
+------------------------------------------------------------------------------------------------------------
+
+    open class Animal(val name: String, val age: Int) {
+        init {
+            println("Animal initialized with name = $name and age = $age")
+        }
+    }
+
+    class Dog(name: String, age: Int, val breed: String) : Animal(name, age) {
+        init {
+            println("Dog initialized with breed = $breed")
+        }
+    }
+
+    fun main() {
+        val dog = Dog("Buddy", 5, "Golden Retriever")
+    }
+
+    Output:
+    ----------
+    Animal initialized with name = Buddy and age = 5
+
+    Dog initialized with breed = Golden Retriever
+
+
+
+Kotlin’s constructor features offer a more concise and expressive way to initialize objects,
+making code easier to read and maintain.
+
+
+
+
+
+
+
+
+
+
+    Example
+    -----------
+    class Car(var brand: String, var model: String, var year: Int)
+-------------------------------------------------
+Single object
+-------------------------------------------------
+    Example
+    ---------
+    fun main() {
+      val c1 = Car("Ford", "Mustang", 1969)
+    }
+-------------------------------------------------
+ Multiple objects of one class:
+------------------------------------------------
+
+    Example
+    ----------
+    class Car(var brand: String, var model: String, var year: Int)
+
+    fun main() {
+      val c1 = Car("Ford", "Mustang", 1969)
+      val c2 = Car("BMW", "X5", 1999)
+      val c3 = Car("Tesla", "Model S", 2020)
+    }
+
+
