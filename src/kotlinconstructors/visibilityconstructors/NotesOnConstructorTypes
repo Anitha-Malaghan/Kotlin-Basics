@@ -1,0 +1,130 @@
+Kotlin supports four visibility modifiers:
+
+-public
+-private
+-protected
+-internal
+
+Visibility Modifiers for Constructors
+---------------------------------------------------------------------------------------------------------------
+-These modifiers can be applied to constructors to control where instances of the class can be created.
+
+---------------------------------------------------------------------------------
+Here's an example demonstrating each visibility modifier for constructors:
+---------------------------------------------------------------------------------
+
+    --------------------------------------------------------------------------------------------------------
+    1. Public constructor (default)
+    --------------------------------------------------------------------------------------------------------
+    Default Visibility: If no visibility modifier is specified, the default is public.
+
+    Access Level:
+    ------------
+        Top-Level Declarations: Accessible from anywhere in the project.
+
+        Members: Accessible from any other class or function.
+
+        Use Case: When you want your declarations to be accessible from anywhere.
+
+
+        class PublicConstructorClass(val name: String) {
+            // Public constructor by default
+        }
+
+        // Public class (default visibility)
+        class PublicClass {
+            val publicProperty = "I'm public"
+
+            fun publicFunction() {
+                println(publicProperty)
+            }
+        }
+
+
+    --------------------------------------------------------------------------------------------------------
+    2. Private constructor
+    --------------------------------------------------------------------------------------------------------
+    Access Level:
+    -------------
+    Top-Level Declarations: Accessible only within the file where it is declared.
+
+    Members: Accessible only within the class or object where it is declared.
+
+    Use Case: To restrict access to the declaration within a limited scope.
+
+    class PrivateConstructorClass private constructor(val name: String) {
+        // Private constructor, cannot be instantiated outside this class
+        companion object {
+            fun create(name: String): PrivateConstructorClass {
+                return PrivateConstructorClass(name)
+            }
+        }
+    }
+
+    --------------------------------------------------------------------------------------------------------
+    3.  Internal constructor
+    --------------------------------------------------------------------------------------------------------
+    Access Level:
+    ---------------
+    Top-Level Declarations: Accessible within the same module.
+
+    Members: Accessible within the same module.
+
+    Module: A set of Kotlin files compiled together (e.g., an IntelliJ IDEA module, a
+    Maven or Gradle project).
+
+    Use Case: To restrict access to within the module, allowing encapsulation at the
+    module level.
+
+    class InternalConstructorClass internal constructor(val name: String) {
+        // Internal constructor, visible within the same module
+    }
+
+    --------------------------------------------------------------------------------------------------------
+    4. Protected constructors
+    --------------------------------------------------------------------------------------------------------
+    Access Level:
+    -----------------
+    Top-Level Declarations:These are not directly allowed for top-level classes in Kotlin
+
+    Members: Accessible within the class and its subclasses.
+
+    Use Case: To allow access to members within the class and its subclasses but
+    prevent access from other classes.
+
+
+    -They can be used in subclasses
+        //SuperClass
+        open class ProtectedConstructorClass protected constructor(val name: String) {
+            // Protected constructor, can be called in subclasses
+        }
+
+        //SubClass
+        class ProtectedConstructorSubclass(name: String) : ProtectedConstructorClass(name)
+-----------------------------------------------------------------------------------------------------------------
+Summary
+-----------------------------------------------------------------------------------------------------------------
+Visibility 	    Access Level 	            Access Level 	            Use Case
+Modifier        (Top-Level)                 (Members)
+----------------------------------------------------------------------------------------------------------------
+public	        Everywhere	             Everywhere	                General purpose, default visibility
+
+private	        Only within 	        Only within the 	        Encapsulation, hiding implementation details
+                the same file           containing class
+
+protected	    Not applicable	        Within the class 	        Inheritance, providing access to subclasses
+                                        and subclasses
+
+internal	    Within the same 	    Within the 	                Module encapsulation, internal project logic
+                module                  same module
+------------------------------------------------------------------------------------------------------------
+Key Points
+-----------------------------------------------------------------------------------------------------------------
+-Public is the default visibility modifier and allows broad access.
+
+-Private is used to restrict access to the file or class, providing encapsulation.
+
+-Protected is used with classes and allows access within subclasses, aiding inheritance.
+
+-Internal restricts access to within the module, useful for module-level encapsulation
+----------------------------------------------------------------------------------------------

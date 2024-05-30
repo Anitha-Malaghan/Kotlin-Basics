@@ -1,4 +1,4 @@
-package kotlinclass.constructor.primaryconstructor
+package kotlinconstructors.primaryconstructor
 
 fun main() {
     val person = Person("Alice", 30)

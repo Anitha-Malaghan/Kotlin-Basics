@@ -1,4 +1,4 @@
-package kotlinclass.constructor.secondaryconstructor
+package kotlinconstructors.secondaryconstructor
 fun main() {
     val person1 = Person("Bob", 25)
     println("Name: ${person1.name}, Age: ${person1.age}")

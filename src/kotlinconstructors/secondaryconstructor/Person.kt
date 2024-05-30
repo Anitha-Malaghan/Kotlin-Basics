@@ -1,4 +1,4 @@
-package kotlinclass.constructor.secondaryconstructor
+package kotlinconstructors.secondaryconstructor
 
 //Delegation Approach Or Primary and Secondary Constructor with delegation
 class Person {

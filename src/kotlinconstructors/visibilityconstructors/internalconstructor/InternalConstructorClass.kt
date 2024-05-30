@@ -1,4 +1,4 @@
-package kotlinclass.constructor.visibilityconstructors
+package kotlinconstructors.visibilityconstructors.internalconstructor
 
 // Internal constructor
 class InternalConstructorClass internal constructor(val name: String) {

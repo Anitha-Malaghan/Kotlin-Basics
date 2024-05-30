@@ -1,8 +1,8 @@
-package kotlinclass.constructor.visibilityconstructors
+package kotlinconstructors.visibilityconstructors.privateconstructor
 
-// Private constructor
+// Class with a private constructor
 class PrivateConstructorClass private constructor(val name: String) {
-    // Private constructor, cannot be instantiated outside this class
+    // Companion object providing a factory method to create an instance
     companion object {
         fun create(name: String): PrivateConstructorClass {
             return PrivateConstructorClass(name)

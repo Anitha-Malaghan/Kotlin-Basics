@@ -1,4 +1,4 @@
-package kotlinclass.constructor.defaultvaluesconstructor
+package kotlinconstructors.defaultvaluesconstructor
 
 fun main() {
     val user1 = User("Dave", 25)

@@ -1,4 +1,4 @@
-package kotlinclass.constructor.multiconstructor
+package kotlinconstructors.multiconstructor
 
 
 // Primary and Secondary Constructor with Initialization Block

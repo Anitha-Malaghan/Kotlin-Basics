@@ -1,4 +1,4 @@
-package kotlinclass.constructor.multiconstructor
+package kotlinconstructors.multiconstructor
 
 fun main() {
     val car1 = Car("Toyota", "Corolla")
