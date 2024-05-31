@@ -1,0 +1,54 @@
+-In Kotlin, inheritance allows a class (subclass or derived class) to inherit properties
+and functions from another class (superclass or base class)
+
+------------------------------------------------------------------------------------------------
+Syntax of Inheritance
+------------------------------------------------------------------------------------------------
+In Kotlin, you use the colon : to denote inheritance.
+
+The syntax for inheriting from a superclass is as follows:
+
+    // Superclass (Base class)
+    open class Animal {
+        // Properties and methods of Animal class
+    }
+
+    // Subclass (Derived class)
+    class Dog : Animal() {
+        // Properties and methods specific to Dog class
+    }
+
+open: Keyword used to mark a class as open for inheritance.
+By default, classes in Kotlin are final and cannot be inherited from unless marked with open.
+
+Animal(): Superclass constructor call, which is necessary if the superclass has a constructor.
+---------------------------------------------------------------------------------------------------------------------
+Key Points
+---------------------------------------------------------------------------------------------------------------------
+-Subclasses inherit properties and methods from the superclass.
+
+-Subclasses can override superclass methods by using the override keyword.
+
+-Properties and methods in the superclass can be marked as open to allow for overriding
+in subclasses.
+
+By default, classes in Kotlin are final, meaning they cannot be subclassed unless marked with open.
+
+Kotlin does not support multiple inheritance (inheriting from multiple classes), but it supports implementing
+multiple interfaces.
+---------------------------------------------------------------------------------------------------------------------
+Summary
+-------------------------------------------------------------------------------------------------------------------
+-Inheritance is an important concept in object-oriented programming that allows for code reuse and polymorphism.
+
+-Kotlin provides support for single class inheritance through the open keyword and the override modifier,
+ allowing subclasses to inherit and customize behavior from superclasses.
+
+
+
+
+
+
+
+
+

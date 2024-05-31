@@ -1,0 +1,69 @@
+Top-Level Function
+----------------------------------------------------------------------------------------------
+-Top-level functions are declared outside of any class or object.
+
+-They can be accessed from anywhere within the same file or module.
+
+    // Top-level function declaration
+    fun greet(name: String) {
+        println("Hello, $name!")
+    }
+
+    fun main() {
+        greet("Alice") // Calling the top-level function
+    }
+-----------------------------------------------------------------------------------------------
+2. Member Function (Inside Class)
+------------------------------------------------------------------------------------------------
+-Member functions are declared inside classes and are associated with instances of those
+classes.
+-They can access the properties and other member functions of the class.
+
+
+// Class with a member function
+    class Greeter {
+        fun greet(name: String) {
+            println("Hello, $name!")
+        }
+    }
+
+    fun main() {
+        val greeter = Greeter() // Creating an instance of the class
+        greeter.greet("Bob") // Calling the member function
+    }
+_________________________________________________________________________________________
+3. Local Function (Inside Another Function)
+------------------------------------------------------------------------------------------
+-Local functions are declared within the body of another function.
+
+-They are only accessible from within the enclosing function and can access its parameters
+and local variables.
+
+    // Function with a local function
+    fun greet(name: String) {
+        fun formatGreeting(name: String): String {
+            return "Hello, $name!"
+        }
+
+        println(formatGreeting(name)) // Calling the local function
+    }
+
+    fun main() {
+        greet("Charlie") // Calling the outer function
+    }
+----------------------------------------------------------------------------------------------
+Summary
+----------------------------------------------------------------------------------------------
+Top-Level Functions:
+--------------------
+Declared outside of any class, accessible from anywhere in the same file or module.
+
+Member Functions:
+-------------------
+Declared inside classes, associated with instances of those classes, and accessed using the
+instance reference.
+
+Local Functions:
+-------------------
+Declared inside the body of another function, accessible only within the enclosing function,
+and can access its parameters and local variables.

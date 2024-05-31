@@ -1,0 +1,86 @@
+1. Single Inheritance
+------------------------------------------------------------------------------------------------------------
+-Single inheritance is the most common type of inheritance where a subclass inherits from only one superclass.
+
+-Kotlin supports single inheritance, meaning a class can extend (inherit from) only one other class.
+
+
+    open class Animal {
+        // Properties and methods of Animal class
+    }
+
+    class Dog : Animal() {
+        // Properties and methods specific to Dog class
+    }
+--------------------------------------------------------------------------------------------------------------------
+2. Hierarchical Inheritance
+--------------------------------------------------------------------------------------------------------------------
+-In hierarchical inheritance, multiple subclasses inherit from the same superclass.
+
+-Each subclass may have its own specific properties and behaviors.
+
+
+    open class Animal {
+        // Properties and methods of Animal class
+    }
+
+    class Dog : Animal() {
+        // Properties and methods specific to Dog class
+    }
+
+    class Cat : Animal() {
+        // Properties and methods specific to Cat class
+    }
+--------------------------------------------------------------------------------------------------------------------
+3. Multi-level Inheritance
+--------------------------------------------------------------------------------------------------------------------
+-Multi-level inheritance involves a chain of inheritance where a subclass inherits from another subclass,
+ forming a hierarchy.
+
+    open class Animal {
+        // Properties and methods of Animal class
+    }
+
+    open class Mammal : Animal() {
+        // Properties and methods specific to Mammal class
+    }
+
+    class Dog : Mammal() {
+        // Properties and methods specific to Dog class
+    }
+--------------------------------------------------------------------------------------------------------------------
+4. Hybrid (Multiple Inheritance)
+____________________________________________________________________________________________________________________
+-Multiple inheritance refers to a scenario where a class inherits properties and methods from multiple superclasses.
+
+-However, Kotlin does not support multiple inheritance of classes to avoid the diamond problem.
+
+
+// Not supported in Kotlin
+// class Student : Person(), Employee() {}
+
+-------------------------------------------------------------------------------------------------------------------
+Summary
+------------------------------------------------------------------------------------------------------------------
+    Single Inheritance: A subclass inherits from only one superclass.
+
+    Hierarchical Inheritance: Multiple subclasses inherit from the same superclass.
+
+    Multi-level Inheritance: Subclasses form a chain of inheritance.
+
+    Hybrid (Multiple Inheritance): Kotlin does not support inheriting from multiple classes directly,
+    but it supports implementing multiple interfaces.
+
+In Kotlin, while single inheritance is supported, hybrid (multiple inheritance) is not directly supported
+to avoid complexities such as the diamond problem.
+
+However, Kotlin provides alternatives such as interfaces to achieve similar functionality while maintaining code
+clarity and simplicity.
+
+
+
+
+
+
+
+

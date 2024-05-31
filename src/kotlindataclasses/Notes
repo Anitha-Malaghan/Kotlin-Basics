@@ -1,0 +1,115 @@
+Data classes
+---------------------------------------------------------------------------------------------------------------------
+-Data Classes in Kotlin are used to hold data and provide a concise way to create classes
+that are primarily used to store values.
+
+-The Kotlin compiler automatically generates several useful methods for data classes, including
+    equals(),
+    hashCode(),
+    toString(),
+    copy(),
+    componentN()
+
+-This makes data classes very convenient for managing data without having to write boilerplate code.
+------------------------------------------------------------------------------------------------------------------
+Syntax for Data Classes
+------------------------------------------------------------------------------------------------------------------
+-To define a data class in Kotlin, you use the data keyword before the class declaration.
+
+-A data class must have at least one primary constructor parameter.
+
+    Example:
+    -------------
+    data class User(val name: String, val age: Int)
+
+--------------------------------------------------------------------------------------------------------------------
+Automatically Generated Functions
+--------------------------------------------------------------------------------------------------------------------
+For the User data class defined above, the Kotlin compiler generates the following:
+
+    -equals(): Checks if two instances are equal.
+
+    -hashCode(): Provides a hash code value for the object.
+
+    -toString(): Returns a string representation of the object.
+
+    -copy(): Creates a copy of the object, optionally modifying some of the properties.
+
+    -componentN(): Functions for each property, enabling destructuring declarations.
+
+--------------------------------------------------------------------------------------------------------------------
+Example Usage of Data Classes
+--------------------------------------------------------------------------------------------------------------------
+    data class User(val name: String, val age: Int)
+
+    fun main() {
+
+        // Creating an instance of User data class
+        val user1 = User("Alice", 25)
+        println(user1) // toString() is called
+
+        // Using copy() to create a new instance with some changes
+        val user2 = user1.copy(name = "Bob")
+        println(user2)
+
+        // Checking equality using equals()
+        val user3 = User("Alice", 25)
+        println(user1 == user3) // true, as the properties are the same
+
+        // Using hashCode()
+        println(user1.hashCode())
+        println(user3.hashCode())
+
+        // Using componentN() functions for destructuring declarations
+        val (name, age) = user1
+        println("Name: $name, Age: $age")
+    }
+
+------------------------------------------------------------------------------------------------------------------
+Explanation of the Example
+------------------------------------------------------------------------------------------------------------------
+Creating Instances:
+----------------------
+    val user1 = User("Alice", 25)
+    println(user1) // Output: User(name=Alice, age=25)
+
+Using copy() Function:
+--------------------------
+    val user2 = user1.copy(name = "Bob")
+    println(user2) // Output: User(name=Bob, age=25)
+
+Checking Equality with equals():
+---------------------------------------
+val user3 = User("Alice", 25)
+println(user1 == user3) // Output: true
+
+Using hashCode():
+---------------------------------
+println(user1.hashCode())
+println(user3.hashCode())
+
+Destructuring Declarations:
+------------------------------------
+val (name, age) = user1
+println("Name: $name, Age: $age") // Output: Name: Alice, Age: 25
+
+-------------------------------------------------------------------------------------------------------------------
+Additional Features
+-------------------------------------------------------------------------------------------------------------------
+Immutable Properties: By default, the properties in a data class are val (immutable). If you need mutable properties, you can use var.
+
+Custom Methods: You can define custom methods inside a data class, just like any other class.
+
+Inheritance: Data classes cannot be abstract, open, sealed, or inner.
+
+Conclusion
+Data classes in Kotlin provide a simple and powerful way to create classes that are primarily used to store data.
+
+By leveraging the automatically generated functions, you can significantly reduce boilerplate code and focus on
+the core functionality of your application.
+
+
+
+
+
+

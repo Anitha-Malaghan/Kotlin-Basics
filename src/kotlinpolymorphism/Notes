@@ -1,0 +1,99 @@
+Kotlin Polymorphism:
+---------------------------------------------------------------------------------------------------------------------
+-Polymorphism is a fundamental concept in object-oriented programming that allows objects of different types to be
+ treated as objects of a common super type.
+
+-In Kotlin, polymorphism is achieved through inheritance and interfaces, allowing methods to be called on an
+object without knowing its exact type.
+
+---------------------------------------------------------------------------------------------------------------------
+Types of Polymorphism
+---------------------------------------------------------------------------------------------------------------------
+    1. Compile-time Polymorphism (Method Overloading)
+    2. Runtime Polymorphism (Method Overriding)
+
+----------------------------------------------------------------------------------------------------------------------
+Example of Polymorphism in Kotlin
+--------------------------------------------------------------------------------------------------------------------
+1. Compile-time Polymorphism (Method Overloading)
+---------------------------------------------------
+-Method overloading allows a class to have more than one method with the same name, but with different parameters.
+
+
+    class MathOperations {
+        fun add(a: Int, b: Int): Int {
+            return a + b
+        }
+
+        fun add(a: Double, b: Double): Double {
+            return a + b
+        }
+
+        fun add(a: Int, b: Int, c: Int): Int {
+            return a + b + c
+        }
+    }
+
+    fun main() {
+        val mathOps = MathOperations()
+        println(mathOps.add(2, 3))           // Output: 5
+        println(mathOps.add(2.5, 3.5))       // Output: 6.0
+        println(mathOps.add(1, 2, 3))        // Output: 6
+    }
+
+2. Runtime Polymorphism (Method Overriding)
+----------------------------------------------
+-Method overriding allows a subclass to provide a specific implementation of a method that is already defined in
+its superclass.
+
+    open class Animal {
+        open fun makeSound() {
+            println("Animal makes a sound")
+        }
+    }
+    class Dog : Animal() {
+        override fun makeSound() {
+            println("Dog barks")
+        }
+    }
+
+    class Cat : Animal() {
+        override fun makeSound() {
+            println("Cat meows")
+        }
+    }
+
+    fun main() {
+        val myAnimal: Animal = Dog() // Polymorphism: Animal reference to a Dog object
+        myAnimal.makeSound()         // Output: Dog barks
+
+        val anotherAnimal: Animal = Cat() // Polymorphism: Animal reference to a Cat object
+        anotherAnimal.makeSound()         // Output: Cat meows
+    }
+---------------------------------------------------------------------------------------------------------------------
+Explanation
+---------------------------------------------------------------------------------------------------------------------
+Compile-time Polymorphism (Method Overloading)
+-------------------------------------------------
+
+    Class: MathOperations
+
+    Methods: add methods with different parameter lists.
+
+    Usage: Demonstrates calling different add methods based on the parameters provided.
+
+Runtime Polymorphism (Method Overriding)
+-----------------------------------------
+Superclass: Animal
+
+Subclasses: Dog and Cat
+
+Overridden Method: makeSound
+
+Usage: Demonstrates calling makeSound on an Animal reference that points to a Dog or Cat object.
+The appropriate method for the actual
+
+
+
+
+

@@ -1,0 +1,102 @@
+Abstract class:
+-----------------------------------------------------------------------------------------------------------------------
+-Abstract classes in Kotlin are used to define a class that cannot be instantiated on its own but can be subclassed.
+
+-Abstract classes can contain abstract properties and methods, which must be implemented by subclasses,
+ as well as non-abstract properties and methods with concrete implementations.
+
+----------------------------------------------------------------------------------------------------------------------
+Syntax of Abstract Class
+------------------------------------------------------------------------------------------------------------------
+-In Kotlin, you declare an abstract class using the abstract keyword.
+
+-An abstract method or property is also marked with the abstract keyword and does not have a body.
+
+--------------------------------------------------------
+Example
+--------------------------------------------------------
+Here's a complete example illustrating how to use an abstract class in Kotlin:
+
+// Abstract class definition
+abstract class Animal(val name: String) {
+    // Abstract property (must be overridden by subclasses)
+    abstract val sound: String
+
+    // Abstract method (must be implemented by subclasses)
+    abstract fun makeSound()
+
+    // Concrete method with implementation
+    fun eat() {
+        println("$name is eating")
+    }
+}
+
+// Subclass inheriting from the abstract class and providing implementations
+class Dog(name: String) : Animal(name) {
+    override val sound: String
+        get() = "Bark"
+
+    override fun makeSound() {
+        println("$name says: $sound")
+    }
+}
+
+// Another subclass inheriting from the abstract class and providing implementations
+class Cat(name: String) : Animal(name) {
+    override val sound: String
+        get() = "Meow"
+
+    override fun makeSound() {
+        println("$name says: $sound")
+    }
+}
+
+fun main() {
+    val dog = Dog("Buddy")
+    dog.eat()          // Output: Buddy is eating
+    dog.makeSound()    // Output: Buddy says: Bark
+
+    val cat = Cat("Whiskers")
+    cat.eat()          // Output: Whiskers is eating
+    cat.makeSound()    // Output: Whiskers says: Meow
+}
+-------------------------------------------------------------------------------------------------------------------
+Explanation
+--------------------------------------------------------------------------------------------------------------------
+Abstract Class: Animal
+--------------------------
+It has an abstract property sound and an abstract method makeSound.
+It also has a concrete method eat with an implementation.
+
+Subclass: Dog
+--------------------------
+It inherits from Animal and provides implementations for the abstract property sound and the abstract method
+makeSound.
+
+Subclass: Cat
+--------------------------
+It also inherits from Animal and provides its own implementations for the abstract property sound and the
+abstract method makeSound.
+
+Main Function:
+------------------------
+It creates instances of Dog and Cat, and demonstrates the use of inherited methods and properties.
+---------------------------------------------------------------------------------------------------------------------------
+Key Points
+---------------------------------------------------------------------------------------------------------------------------
+Abstract Classes: Cannot be instantiated directly. They are meant to be subclassed.
+
+Abstract Members: Properties and methods marked with abstract must be overridden by subclasses.
+
+Concrete Members: Abstract classes can also have regular properties and methods with implementations.
+
+Inheritance: Subclasses must provide implementations for all abstract members of the abstract class.
+
+
+
+
+
+
+
+
+

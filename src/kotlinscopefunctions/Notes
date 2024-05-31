@@ -1,0 +1,185 @@
+Scope functions
+--------------------------------------------------------------------------------------------------------------------
+-Scope functions in Kotlin are powerful tools that allow you to execute a block of code within the context of
+an object.
+
+-They help to make the code more readable and concise by providing a clear scope to operate on objects.
+
+-The main scope functions in Kotlin are let, run, with, apply, and also.
+
+-Each of these functions has different characteristics and is suited for specific use cases.
+
+----------------------------------------------------------------------------------------------------------------------
+1.apply
+----------------------------------------------------------------------------------------------------------------------
+  -Purpose: apply is used for initializing or configuring an object.
+
+  -It returns the object itself.
+
+  -Object Reference: this
+
+  -Return Value: The object itself.
+
+  -Use Case: Ideal for object initialization and setting properties.
+
+      Example:
+      ------------
+      data class Person(var name: String, var age: Int)
+
+      val person = Person("John", 30).apply {
+          name = "Alice"
+          age = 25
+      }
+      println(person) // Output: Person(name=Alice, age=25)
+
+--------------------------------------------------------------------------------------------------------------------
+2. with
+--------------------------------------------------------------------------------------------------------------------
+  -Purpose: with is used to perform multiple operations on the same object(display object properties).
+
+  -It is not an extension function and takes the object as an argument.
+
+  -Object Reference: this
+
+  -Return Value: The result of the lambda expression.
+
+  -Use Case: Useful when you need to call multiple methods on the same object.
+
+      Example:
+      -----------
+      val name = "Kotlin"
+      val result = with(name) {
+          println("The name is $this")
+          length
+      }
+      println(result) // Output: The name is Kotlin, 6
+
+--------------------------------------------------------------------------------------------------------------------
+3. also
+--------------------------------------------------------------------------------------------------------------------
+  -Purpose: also is used to perform additional operations on an object.
+
+  -It returns the object itself.
+
+  -Object Reference: it
+
+  -Return Value: The object itself.
+
+  -Use Case: Useful for performing side effects such as logging or validation.
+
+      Example:
+      -----------
+      val name = "Kotlin"
+      val result = name.also {
+          println("The name is $it")
+      }.toUpperCase()
+      println(result) // Output: The name is Kotlin, KOTLIN
+
+--------------------------------------------------------------------------------------------------------------------
+4. let
+------------------------------------------------------------------------------------------------------------------
+    Purpose: let is used to execute a block of code on the object it is called on.
+
+    It is often used to perform operations that are needed only if the object is non-null.
+
+    Object Reference: it
+
+    Return Value: The result of the lambda expression.
+
+    Use Case: Useful for null checks and performing operations on the result of expressions.
+
+        Example:
+        -----------
+        val name: String? = "Kotlin"
+        val length = name?.let {
+            println("The name is $it")
+            it.length
+        }
+        println(length) // Output: The name is Kotlin, 6
+----------------------------------------------------------------------------------------------------
+5. run:(with+let)
+--------------------------------------------------------------------------------------------------
+    -Purpose: run is used to execute a block of code and return its result.
+
+    -It is often used for initializing objects and for wrapping a sequence of operations that need to be
+     performed on an object.
+
+    -Object Reference: this
+
+    -Return Value: The result of the lambda expression.
+
+    -Use Case: Suitable for object configuration and running a sequence of operations that produce a result.
+
+    Example:
+    -----------
+    val result = "Kotlin".run {
+        println("The name is $this")
+        length
+    }
+    println(result) // Output: The name is Kotlin,
+
+---------------------------------------------------------------------------------------------------------------
+Detailed Comparison
+---------------------------------------------------------------------------------------------------------------
+Function	    Object Reference	        Return Value	        Typical Use Case
+___________________________________________________________________________________________
+let	            it	                        Lambda result	        Null checks, chaining operations
+run	            this	                    Lambda result	        Object configuration, lambda result
+with	        this	                    Lambda result	        Multiple operations on the same object
+apply	        this	                    Object	                Object initialization, property settings
+also	        it	                        Object	                Additional operations, side effects
+
+---------------------------------------------------------------------------------------------------------------
+apply
+---------------------------------------------------------------------------------------------------------------
+data class Person(var name: String, var age: Int)
+
+val person = Person("John", 30).apply {
+    name = "Alice"
+    age = 25
+}
+println(person) // Output: Person(name=Alice, age=25)
+
+-----------------------------------------------------------------------------------------------------------------
+with
+-----------------------------------------------------------------------------------------------------------------
+val name = "Kotlin"
+val result = with(name) {
+    println("The name is $this")
+    length
+}
+println(result) // Output: The name is Kotlin, 6
+
+------------------------------------------------------------------------------------------------------------------
+also
+------------------------------------------------------------------------------------------------------------------
+
+val name = "Kotlin"
+val result = name.also {
+    println("The name is $it")
+}.toUpperCase()
+println(result) // Output: The name is Kotlin, KOTLIN
+
+---------------------------------------------------------------------------------------------------------------------
+let
+-------------------------------------------------------------------------------------------------------------------
+val name: String? = "Kotlin"
+val length = name?.let {
+    println("The name is $it")
+    it.length
+}
+println(length) // Output: The name is Kotlin, 6
+------------------------------------------------------------------------------------------------------------------
+run
+------------------------------------------------------------------------------------------------------------------
+
+val result = "Kotlin".run {
+    println("The name is $this")
+    length
+}
+println(result) // Output: The name is Kotlin, 6
+
+
+
+
+By understanding and using these scope functions appropriately, you can write more expressive, readable, and maintainable Kotlin code. Each function serves a specific purpose, and choosing the right one depends on the context and the operations you need to perform on the object.

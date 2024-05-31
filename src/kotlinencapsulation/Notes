@@ -1,0 +1,90 @@
+Kotlin Encapsulation
+----------------------------------------------------------------------------------------------------------------------
+-Encapsulation is one of the fundamental principles of object-oriented programming, and it is used to bundle the
+data (variables) and methods (functions) that operate on the data into a single unit, usually a class.
+
+-It also restricts direct access to some of an object's components, which is a means of preventing accidental interference and misuse of the data. This is typically achieved using access modifiers.
+
+--------------------------------------------------------------------------------------------------------------------
+Access Modifiers in Kotlin: Kotlin provides four access modifiers
+--------------------------------------------------------------------------------------------------------------------
+public: Visible everywhere (default).
+
+private: Visible only within the same class.
+
+protected: Visible within the same class and subclasses.
+
+internal: Visible within the same module.
+
+Example of Encapsulation in Kotlin
+-----------------------------------------
+class BankAccount(private var accountNumber: String, private var balance: Double) {
+
+    // Public method to deposit money
+    fun deposit(amount: Double) {
+        if (amount > 0) {
+            balance += amount
+            println("Deposited $$amount, new balance is $$balance")
+        } else {
+            println("Invalid deposit amount")
+        }
+    }
+
+    // Public method to withdraw money
+    fun withdraw(amount: Double) {
+        if (amount > 0 && amount <= balance) {
+            balance -= amount
+            println("Withdrew $$amount, new balance is $$balance")
+        } else {
+            println("Invalid or insufficient funds for withdrawal")
+        }
+    }
+
+    // Public method to check balance
+    fun getBalance(): Double {
+        return balance
+    }
+
+    // Public method to get account number
+    fun getAccountNumber(): String {
+        return accountNumber
+    }
+}
+
+fun main() {
+    val account = BankAccount("1234567890", 1000.0)
+
+    println("Account Number: ${account.getAccountNumber()}")
+    println("Initial Balance: ${account.getBalance()}")
+
+    account.deposit(500.0)
+    account.withdraw(200.0)
+    account.withdraw(1500.0)
+
+    println("Final Balance: ${account.getBalance()}")
+}
+
+Creates an instance of BankAccount.
+Accesses account information and performs operations using the public methods,
+without directly accessing the private properties.
+-------------------------------------------------------------------------------------------------------------------
+Benefits of Encapsulation
+-------------------------------------------------------------------------------------------------------------------
+Control Over Data: The class controls how its data is accessed and modified.
+
+Data Hiding: Internal state of the object is hidden from the outside, exposing only necessary methods.
+
+Maintainability: Changes to the internal implementation of the class can be made without affecting external code.
+
+Security: Protects the integrity of the data by preventing unauthorized or inappropriate access.
+
+Encapsulation helps in maintaining a clear separation between the internal state of an object and its external behavior, leading to more robust and maintainable code.
+
+
+
+
+
+
+
+
+

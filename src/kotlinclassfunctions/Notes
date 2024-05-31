@@ -1,0 +1,154 @@
+Kotlin Class Methods/Functions
+-------------------------------------------------------------------------------------------
+-Kotlin methods are essential for organizing and encapsulating logic in your code, promoting
+ reusability and maintainability.
+
+-They provide a powerful mechanism for structuring your programs and making them more
+readable and modular.
+
+In Kotlin, methods are called functions. Functions can be declared at the top level,
+inside classes (as member functions), and even within other functions (as local functions).
+
+--------------------------------------------------------------------------------------------
+Defining Functions in Kotlin
+--------------------------------------------------------------------------------------------
+    fun methodName(parameter1: Type1, parameter2: Type2, ...): ReturnType {
+
+        // Method body
+        // Perform actions, computations, etc.
+        return returnValue // Optional if the method returns a value
+    }
+
+-fun: Keyword indicating the beginning of a function declaration.
+
+-methodName: Name of the function.
+
+-parameter1, parameter2, ...: Input parameters the function accepts.
+
+-Type1, Type2, ...: Types of the parameters.
+
+-ReturnType: Type of the value returned by the function.
+
+-returnValue: Value returned by the function. Optional if the function returns Unit (similar to void in Java).Example
+
+--------------------------------------------------------------------------------------------
+Create a drive() function inside the Car class and call it:
+--------------------------------------------------------------------------------------------
+
+        class Car(var brand: String, var model: String, var year: Int) {
+
+          fun drive() {
+            println("Wrooom!")
+          }
+
+        }
+        fun main() {
+          val c1 = Car("Ford", "Mustang", 1969)
+
+          // Call the function
+          c1.drive()
+        }
+
+    Tip: When a function is declared inside a class, it is known as a class function,
+    or member function.
+
+    Note: When an object of the class is created, it has access to all of the class functions.
+
+------------------------------------------------------------------------------------------------
+Calling Methods
+------------------------------------------------------------------------------------------------
+-We call methods by their name followed by parentheses ().
+
+-If the method has parameters, you pass the values inside the parentheses.
+
+    val result = methodName(argument1, argument2, ...)
+
+    Example:
+        val sum = add(3, 5)
+
+------------------------------------------------------------------------------------------------
+Method Parameters
+----------------------------------------------------------------------------------------------
+-Methods can have zero or more parameters.
+
+-Parameters are defined inside the parentheses () following the method name,
+separated by commas.
+
+    fun methodName(parameter1: Type1, parameter2: Type2, ...) {
+        // Method body
+    }
+
+Example:
+-----------
+
+    fun greet(name: String) {
+        println("Hello, $name!")
+    }
+
+
+---------------------------------------------------------------------------------------------
+Method Return Types
+---------------------------------------------------------------------------------------------
+-Methods can return a value using the return keyword followed by the value to be returned.
+
+-If a method does not return a value, its return type is Unit (similar to void in Java).
+
+    fun methodName(): ReturnType {
+        // Method body
+        return returnValue
+    }
+Example:
+
+    fun add(a: Int, b: Int): Int {
+        return a + b
+    }
+
+Return Type Unit:
+
+    fun methodName(): Unit {
+        // Method body
+    }
+---------------------------------------------------------------------------------------------
+ Named Parameters and Default Arguments
+---------------------------------------------------------------------------------------------
+Kotlin supports named parameters and default arguments, allowing for more flexible method
+calls.
+
+    fun greet(greeting: String, name: String) {
+        println("$greeting, $name!")
+    }
+
+    // Calling with named parameters
+        greet(greeting = "Hello", name = "Alice")
+
+
+
+    fun greet(greeting: String = "Hello", name: String = "World") {
+        println("$greeting, $name!")
+    }
+
+    // Calling with default arguments
+    greet()
+
+------------------------------------------------------------------------------------------------
+Extension Functions
+------------------------------------------------------------------------------------------------
+Kotlin allows you to extend existing classes with new functionality using extension functions. These functions can be defined outside of the class.
+
+    fun ReceiverType.methodName(parameter1: Type1, parameter2: Type2, ...) {
+        // Method body
+    }
+    Example:
+
+    fun String.addExclamationMark(): String {
+        return "$this!"
+    }
+
+    // Calling the extension function
+    val greeting = "Hello".addExclamationMark() // Output: "Hello!"
+
+
+
+
+
+
