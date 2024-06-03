@@ -1,0 +1,102 @@
+Higher-order function
+-------------------------------------------------------------------------------------------------------------------
+-Higher-order functions are a fundamental concept in Kotlin (and many other programming languages) that significantly
+enhance the expressive power of the language.
+
+-A higher-order function is a function that either takes other functions as parameters, returns a function, or both. This allows for a more functional style of programming, enabling powerful abstractions and code reusability.
+
+-------------------------------------------------------------------------------------------------------------------
+Key Concepts of Higher-Order Functions
+-------------------------------------------------------------------------------------------------------------------
+Function as Parameter: You can pass functions as parameters to other functions.
+
+Function as Return Type: A function can return another function.
+
+Lambda Expressions: Often used as arguments for higher-order functions.
+
+-------------------------------------------------------------------------------------------------------------------
+Example of Higher-Order Function in Kotlin
+-------------------------------------------------------------------------------------------------------------------
+    // A higher-order function that takes a function as a parameter
+    fun <T, R> Collection<T>.customMap(transform: (T) -> R): List<R> {
+        val result = mutableListOf<R>()
+        for (item in this) {
+            result.add(transform(item))
+        }
+        return result
+    }
+
+
+    // Using the higher-order function with a lambda
+    fun main() {
+        val numbers = listOf(1, 2, 3, 4, 5)
+
+        // Passing a lambda expression to the customMap function
+        val doubled = numbers.customMap { it * 2 }
+
+        println(doubled) // Output: [2, 4, 6, 8, 10]
+    }
+
+--------------------------------------------------------------------------------------------------------------------
+Explanation
+--------------------------------------------------------------------------------------------------------------------
+Defining a Higher-Order Function:
+
+customMap is a higher-order function that takes a function transform as a parameter.
+
+The transform function takes an element of type T and returns a value of type R.
+
+Using a Lambda Expression:
+
+In the main function, we use customMap and pass a lambda expression { it * 2 } which doubles each element in the list.
+--------------------------------------------------------------------------------------------------------------------
+Built-in Higher-Order Functions in Kotlin
+--------------------------------------------------------------------------------------------------------------------
+Kotlin’s standard library includes many higher-order functions that are commonly used in functional programming.
+
+Some of the most frequently used are map, filter, reduce, forEach, and flatMap.
+
+
+fun main() {
+    val numbers = listOf(1, 2, 3, 4, 5)
+
+    // Using map to double the numbers
+    val doubled = numbers.map { it * 2 }
+
+    // Using filter to find even numbers
+    val evens = numbers.filter { it % 2 == 0 }
+
+    // Using reduce to sum the numbers
+    val sum = numbers.reduce { acc, i -> acc + i }
+
+    // Using forEach to print each number
+    numbers.forEach { println(it) }
+
+    println("Doubled: $doubled")
+    println("Evens: $evens")
+    println("Sum: $sum")
+}
+
+-----------------------------------------------------------------------------------------------------------------
+Explanation
+-----------------------------------------------------------------------------------------------------------------
+map: Transforms each element in the collection using the provided lambda expression.
+
+filter: Filters elements based on a condition.
+
+reduce: Combines all elements in the collection into a single value using the provided lambda.
+
+forEach: Performs the given action on each element.
+
+-----------------------------------------------------------------------------------------------------------------
+
+Higher-order functions make Kotlin a powerful language for both imperative and functional programming styles,
+offering great flexibility and expressiveness in writing concise and readable code.
+
+
+
+
+
+
+
+

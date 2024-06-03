@@ -96,7 +96,8 @@ println("Name: $name, Age: $age") // Output: Name: Alice, Age: 25
 -------------------------------------------------------------------------------------------------------------------
 Additional Features
 -------------------------------------------------------------------------------------------------------------------
-Immutable Properties: By default, the properties in a data class are val (immutable). If you need mutable properties, you can use var.
+Immutable Properties: By default, the properties in a data class are val (immutable).
+If you need mutable properties, you can use var.
 
 Custom Methods: You can define custom methods inside a data class, just like any other class.
 

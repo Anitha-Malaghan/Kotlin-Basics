@@ -1,0 +1,178 @@
+Enums in Kotlin
+---------------------------------------------------------------------------------------------------------------------
+-Enums in Kotlin are a special type of class used to represent a fixed set of constants.
+
+-Each enum constant is an object and they can have properties and methods associated with them.
+
+-Enums are useful for representing predefined sets of values in a type-safe way.
+
+--------------------------------------------------------------------------------------------------------------------
+Defining Enums
+--------------------------------------------------------------------------------------------------------------------
+To define an enum class in Kotlin, you use the enum class keyword followed by the name of the enum.
+Here is an example of a simple enum class representing the days of the week:
+
+    enum class DayOfWeek {
+        MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY, SUNDAY
+    }
+
+--------------------------------------------------------------------------------------------------------------------
+Adding Properties and Methods to Enums
+--------------------------------------------------------------------------------------------------------------------
+Enums can also have properties and methods.
+
+Each enum constant can have its own property values and methods.
+
+Here is an example where each day of the week has an associated isWeekend property and a printDayType method:
+
+    package kotlinenums.enumbasic
+
+    // Enum with a property and a method
+    enum class CreditCardType(val discountRate: Double) {
+        SILVER(0.02),   // 2% discount
+        GOLD(0.05),     // 5% discount
+        PLATINUM(0.1);  // 10% discount
+
+        // Method to calculate discount for a given amount
+        fun calculateDiscount(amount: Double): Double {
+            return amount * discountRate
+        }
+    }
+
+    fun main() {
+        val cardType: CreditCardType = CreditCardType.PLATINUM
+        val purchaseAmount = 1000.0
+
+        println("Card Type: ${cardType.name}")
+        println("Discount Rate: ${cardType.discountRate}")
+        println("Discount for $$purchaseAmount: $${cardType.calculateDiscount(purchaseAmount)}")
+
+        val allCardTypes: Array<CreditCardType> = CreditCardType.values()
+        allCardTypes.forEach {
+            println("${it.name} card gives a discount of ${it.discountRate * 100}%")
+        }
+    }
+
+
+--------------------------------------------------------------------------------------------------------------------
+Using Enums
+--------------------------------------------------------------------------------------------------------------------
+You can access and use enum constants like this:
+
+    fun main() {
+        val today = DayOfWeek.WEDNESDAY
+        println("Today is $today")
+
+        // Check if today is a weekend
+        println("Is today a weekend? ${today.isWeekend}")
+
+        // Print day type
+        today.printDayType()
+    }
+
+--------------------------------------------------------------------------------------------------------------------
+Enum Methods
+--------------------------------------------------------------------------------------------------------------------
+Kotlin provides some built-in methods for enum classes:
+
+1. values(): Returns an array of all enum constants.
+
+2. valueOf(name: String): Returns the enum constant with the specified name.
+Here is an example demonstrating these methods:
+
+    fun main() {
+        // Get all constants
+        val days = DayOfWeek.values()
+        days.forEach { println(it) }
+
+        // Get a specific constant by name
+        val friday = DayOfWeek.valueOf("FRIDAY")
+        println("FRIDAY is a weekend: ${friday.isWeekend}")
+    }
+------------------------------------------------------------------------------------------------------------------
+Enums with Abstract Methods
+------------------------------------------------------------------------------------------------------------------
+Enums in Kotlin can also extend an abstract class or implement interfaces, enabling more complex behavior and
+design patterns.
+
+Let's consider a scenario where different types of transactions (like DEPOSIT, WITHDRAWAL) need specific processing logic. We can achieve this by defining an enum that extends an abstract class with an abstract method.
+
+
+    --------------------------------
+    Abstract Class
+    --------------------------------
+
+    abstract class Transaction(val amount: Double) {
+        abstract fun process(): String
+    }
+
+    ---------------------------------
+    Enum Extending Abstract Class
+    ---------------------------------
+    Next, let's define an enum TransactionType that extends the abstract class Transaction:
+
+    enum class TransactionType(amount: Double) : Transaction(amount) {
+
+        DEPOSIT(amount) {
+            override fun process(): String {
+                return "Depositing $$amount"
+            }
+        },
+        WITHDRAWAL(amount) {
+            override fun process(): String {
+                return "Withdrawing $$amount"
+            }
+        }
+    }
+    -----------------------------------
+    Main Function to Demonstrate Usage
+    -----------------------------------
+    Finally, let's create a main function to demonstrate the usage of our enum with the abstract class:
+
+    fun main() {
+        val deposit = TransactionType.DEPOSIT(100.0)
+        val withdrawal = TransactionType.WITHDRAWAL(50.0)
+
+        println(deposit.process())
+        println(withdrawal.process())
+    }
+-----------------------------------------------------------------------------------------------------------------
+2. Enums can also have abstract methods that each enum constant must implement:
+-----------------------------------------------------------------------------------------------------------------
+    enum class Operation {
+        ADD {
+            override fun apply(x: Int, y: Int): Int = x + y
+        },
+        SUBTRACT {
+            override fun apply(x: Int, y: Int): Int = x - y
+        },
+        MULTIPLY {
+            override fun apply(x: Int, y: Int): Int = x * y
+        },
+        DIVIDE {
+            override fun apply(x: Int, y: Int): Int = x / y
+        };
+
+        abstract fun apply(x: Int, y: Int): Int
+    }
+
+    fun main() {
+        val op = Operation.ADD
+        println("Result of ADD operation: ${op.apply(4, 2)}")
+    }
+--------------------------------------------------------------------------------------------------------------------
+Summary
+--------------------------------------------------------------------------------------------------------------------
+Enums in Kotlin are a powerful feature that allows you to define a set of constants in a type-safe way.
+
+They can have properties, methods, and even abstract methods that each constant must implement.
+
+Enums are useful for representing predefined sets of values and improving code readability and maintainability.
+
+
+
+
+
+
+
+

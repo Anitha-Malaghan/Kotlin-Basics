@@ -1,0 +1,73 @@
+Lambda expression
+-------------------------------------------------------------------------------------------------------------------
+A lambda expression in Kotlin is a concise way to define anonymous functions or function literals,
+which can be treated as objects and passed around in your code. Here's a detailed breakdown:
+
+Syntax:
+-----------
+    Lambda expressions are defined using curly braces {}.
+    Syntax: { arguments -> body }
+
+Parameters:
+----------
+    Lambda parameters are declared before the arrow ->.
+    Parameters can be explicitly typed or inferred.
+    Multiple parameters are separated by commas.
+
+Arrow (->):
+--------------
+    Separates the parameter list from the function body.
+
+Function Body:
+---------------
+    Contains the code to be executed when the lambda is invoked.
+    The last expression in the body is implicitly returned.
+
+Type Inference:
+---------------
+    In many cases, the parameter types can be inferred by the compiler.
+    Explicit parameter types can be specified if needed.
+
+--------------------------------------
+Higher-Order Functions:
+--------------------------------------
+    Kotlin supports higher-order functions, which can accept functions as parameters or return functions.
+    Lambdas are often used as arguments to higher-order functions.
+
+it Keyword:
+----------------------
+In single-parameter lambdas, if the parameter is not explicitly named, it can be referred to as it.
+
+Examples:
+------------------
+Single-line expression: { a, b -> a + b }
+Multi-line expression: { x, y -> val sum = x + y sum * 2 }
+
+Use Cases:
+------------------
+    Commonly used for concise callbacks, such as event listeners or asynchronous tasks.
+    Used with higher-order functions like map, filter, reduce, etc., for functional-style programming.
+    Provides a way to pass behavior as a parameter.
+
+Closures:
+------------------
+Lambdas can capture and access variables from the enclosing scope.
+
+The variables captured by a lambda are called closures.
+
+The values of captured variables are preserved even if the enclosing scope goes out of scope.
+
+In summary, Kotlin lambdas are a powerful feature that enables concise and expressive code, especially when
+working with higher-order functions and functional programming paradigms.
+
+They provide a way to define behavior inline, making your code more readable and maintainable.
+
+
+
+
+
+
+
+
+
+

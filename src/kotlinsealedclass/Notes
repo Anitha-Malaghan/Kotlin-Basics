@@ -1,0 +1,59 @@
+Sealed class
+--------------------------------------------------------------------------------------------------------------------
+
+-A sealed class in Kotlin is a special type of abstract class that allows you to define a closed hierarchy of
+subclasses within a single file.
+
+-This means that all direct subclasses of a sealed class must be declared within the same file where the
+sealed class is declared.
+
+-Sealed classes offer more flexibility and expressiveness compared to enums, making them suitable for scenarios
+where a fixed set of options is not sufficient, and a hierarchy of related classes is needed
+
+-Sealed classes are typically used to represent restricted class hierarchies, where all possible subclasses are
+known and limited.
+
+-One key feature of sealed classes is their interaction with when expressions.
+
+-When you use a sealed class in a when expression, the compiler performs exhaustive checks to ensure that all
+possible subclasses are covered.
+
+-This means that you must provide a branch for each subclass, which helps catch missing cases at compile time,
+improving code safety.
+
+-Additionally, sealed classes can have parameters and contain their own properties and methods, just like regular
+classes. However, they cannot be instantiated directly, as they are abstract. Instead, you can create instances of sealed class subclasses.
+-------------------------------------------------------------------------------------------------------------
+Example
+-------------------------------------------------------------------------------------------------------------
+    sealed class Result
+    data class Success(val data: String) : Result()
+    data class Error(val message: String) : Result()
+
+    fun handleResult(result: Result) {
+        when (result) {
+            is Success -> println("Success: ${result.data}")
+            is Error -> println("Error: ${result.message}")
+        }
+    }
+
+    fun main() {
+        val successResult = Success("Data fetched successfully")
+        val errorResult = Error("Failed to fetch data")
+
+        handleResult(successResult)
+        handleResult(errorResult)
+    }
+
+In this example, Result is a sealed class with two subclasses: Success and Error.
+
+The handleResult function uses a when expression to handle instances of Result, ensuring that all possible
+subclasses are covered.
+
+
+
+
+
+
+
+
