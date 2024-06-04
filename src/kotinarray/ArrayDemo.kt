@@ -12,6 +12,10 @@ fun main() {
     // Modifying elements
     numbers[0] = 10
     println("Modified first element of numbers array: ${numbers[0]}")
+    /*
+    Exception in thread "main" java.lang.ArrayIndexOutOfBoundsException: Index 5 out of bounds for length 5
+    numbers[5] = 10
+    */
 
     // Array length
     println("Length of numbers array: ${numbers.size}")

@@ -1,7 +1,7 @@
 Higher-order function
 -------------------------------------------------------------------------------------------------------------------
--Higher-order functions are a fundamental concept in Kotlin (and many other programming languages) that significantly
-enhance the expressive power of the language.
+-Higher-order functions are a fundamental concept in Kotlin (and many other programming languages) that
+significantly enhance the expressive power of the language.
 
 -A higher-order function is a function that either takes other functions as parameters, returns a function, or both. This allows for a more functional style of programming, enabling powerful abstractions and code reusability.
 
@@ -13,6 +13,39 @@ Function as Parameter: You can pass functions as parameters to other functions.
 Function as Return Type: A function can return another function.
 
 Lambda Expressions: Often used as arguments for higher-order functions.
+
+-------------------------------------------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------------------------------------------
+Higher-order functions" and "higher-level functions" are related concepts in programming, but they refer to different things.
+
+Higher-Order Functions:
+-----------------------
+-Higher-order functions are functions that can take other functions as arguments or return functions as results.
+
+-In languages that support higher-order functions, functions are treated as first-class citizens, meaning
+ they can be assigned to variables, passed as arguments, and returned from other functions.
+
+-Examples of higher-order functions include map, filter, and reduce in languages like Python and JavaScript.
+
+Higher-Level Functions:
+-----------------------
+-Higher-level functions refer to functions that operate at a higher level of abstraction, typically dealing with
+ more complex tasks or concepts.
+-These functions are often built on top of lower-level functions or abstractions to provide more functionality or
+ solve more complex problems.
+-The term "higher-level" can also refer to functions that operate on higher-level data structures or concepts,
+ such as lists, sets, or dictionaries.
+-Higher-level functions may or may not be higher-order functions. They can be functions that operate at a higher
+conceptual level, regardless of whether they take other functions as arguments or return functions as results.
+
+
+In summary, "higher-order functions" specifically deal with functions that can take or return other functions,
+while "higher-level functions" refer to functions that operate at a higher level of abstraction or complexity.
+Higher-level functions may or may not be higher-order functions.
+
+
+
 
 -------------------------------------------------------------------------------------------------------------------
 Example of Higher-Order Function in Kotlin
@@ -54,7 +87,12 @@ Built-in Higher-Order Functions in Kotlin
 --------------------------------------------------------------------------------------------------------------------
 Kotlin’s standard library includes many higher-order functions that are commonly used in functional programming.
 
-Some of the most frequently used are map, filter, reduce, forEach, and flatMap.
+Some of the most frequently used are
+    map,
+    filter,
+    reduce,
+    forEach,
+    flatMap.
 
 
 fun main() {

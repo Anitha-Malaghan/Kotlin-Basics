@@ -6,6 +6,12 @@ Kotlin Array
 -In Kotlin, arrays are a collection of elements of the same type.
 
 -They are created using the arrayOf function or specific array classes for primitive types.
+
+Array: Represents a fixed-size collection of elements of the same type.
+Arrays in Kotlin can be mutable (Array) or immutable (Array with specified size).
+
+val immutableArray = arrayOf("apple", "banana", "orange")
+val mutableArray = arrayOfNulls<String>(5) // Mutable array of size 5
 -----------------------------------------------
 Operations on Array
 -----------------------------------------------
