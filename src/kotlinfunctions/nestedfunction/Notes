@@ -1,0 +1,32 @@
+Nested Function:
+------------------------------
+functions can be nested within other functions.
+
+Nested functions can access the variables and parameters of their enclosing functions.
+
+Here's an example demonstrating how to use nested functions:
+
+Example:
+    fun outerFunction(a: Int, b: Int): Int {
+        // A nested function
+        fun innerFunction(x: Int, y: Int): Int {
+            return x + y
+        }
+
+        // Call the nested function
+        return innerFunction(a, b)
+    }
+
+    fun main() {
+        val result = outerFunction(3, 7)
+        println("Result: $result") // Output: Result: 10
+    }
+
+Explanation
+--------------------------
+Outer Function: outerFunction(a: Int, b: Int) takes two integer parameters.
+
+Nested Function: Inside outerFunction, there is a nested function called innerFunction(x: Int, y: Int), which
+also takes two integer parameters and returns their sum.
+
+Calling Nested Function: outerFunction calls innerFunction with its own parameters a and b, and returns the result.

@@ -1,0 +1,61 @@
+Visibility Modifiers:
+----------------------------------------------------------------------------------------------------------------
+    1. public: Visible everywhere.
+
+    2. private: Visible only within the file containing its declaration.
+
+    3. protected: Visible within the class containing its declaration and its subclasses.
+
+    4. internal: Visible within the same module.
+
+Inheritance Modifiers:
+----------------------------------------------------------------------------------------------------------------
+    1. abstract: For classes and functions, indicating they must be subclassed or overridden.
+
+    2. final: For classes and functions, indicating they cannot be subclassed or overridden.
+
+    3. open: For classes and functions, allowing them to be subclassed or overridden.
+
+    4. override: Indicating that a function or property overrides a superclass function or property.
+
+Property Modifiers:
+----------------------------------------------------------------------------------------------------------------
+    1. lateinit: For mutable properties not initialized in the constructor.
+
+    2. const: For compile-time constants, applied to top-level or member properties with primitive or String types,
+    initialized with a compile-time known value.
+
+Function Modifiers:
+----------------------------------------------------------------------------------------------------------------
+    1. tailrec: Optimizes tail-recursive functions to avoid stack overflow. It must be applied to functions that
+    are tail-recursive, meaning the function's last operation is the recursive call.
+
+    2. suspend: Indicates that a function is a suspend function, which can be paused and resumed at a later time.
+    Suspend functions are typically used in conjunction with coroutines for asynchronous programming.
+
+    3. inline: Advises the compiler to inline the function call at the call site, which can improve performance by
+    avoiding function call overhead and enabling certain optimizations.
+
+    4. crossinline: Specifies that a lambda passed as a parameter to a function cannot be non-local return or
+    suspended.
+
+    5. noinline: Specifies that a lambda passed as a parameter to a function should not be inlined.
+
+    6. operator: Allows overloading of certain operators like +, -, *, etc., by defining corresponding functions
+    for them.
+
+    7. infix: Marks a function as an infix function, allowing it to be called without using the dot and parentheses
+    syntax.
+
+    8. @JvmStatic: Marks a Kotlin function as a static method in the generated Java bytecode, allowing it to be
+    called from Java code as a static method.
+
+    These modifiers provide various capabilities and optimizations for Kotlin functions, enabling developers to
+    write more expressive and performant code.
+
+Class/Object Modifiers:
+----------------------------------------------------------------------------------------------------------------
+    1. companion: For defining a companion object within a class, providing access to private members of the class.
+    These modifiers are fundamental in Kotlin for controlling visibility, inheritance, behavior, and asynchronous programming paradigms.
+
+

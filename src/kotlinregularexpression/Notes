@@ -1,0 +1,415 @@
+Kotlin Regular Expression
+------------------------------------------------------------------------------------------------------------------
+Regular expressions in Kotlin are quite powerful and are based on Java's regular expression capabilities.
+
+
+1. Creating a Regular Expression
+------------------------------------------------
+You can create a regular expression in Kotlin using the toRegex() extension function or the Regex class.
+
+    val regex = "pattern".toRegex()
+    or
+    val regex = Regex("pattern")
+
+2. Basic Usage
+-----------------------------------------------
+Matching a Pattern
+To check if a string matches a pattern:
+
+    val pattern = "hello".toRegex()
+    val input = "hello world"
+
+    val isMatch = pattern.containsMatchIn(input)
+    println(isMatch)  // Output: true
+
+3.Finding Matches
+-----------------------------------------------
+To find all occurrences of a pattern in a string:
+
+    val pattern = "\\d+".toRegex()  // Matches one or more digits
+    val input = "There are 123 apples and 456 oranges."
+
+    val matches = pattern.findAll(input)
+    for (match in matches) {
+        println(match.value)  // Output: 123 and 456
+    }
+
+Replacing Matches
+-----------------------------------------------
+To replace all occurrences of a pattern:
+
+    val pattern = "\\d+".toRegex()  // Matches one or more digits
+    val input = "There are 123 apples and 456 oranges."
+
+    val replaced = pattern.replace(input, "many")
+    println(replaced)  // Output: There are many apples and many oranges.
+
+To replace only the first occurrence:
+-------------------------------------------
+
+    val pattern = "\\d+".toRegex()  // Matches one or more digits
+    val input = "There are 123 apples and 456 oranges."
+
+    val replaced = pattern.replaceFirst(input, "many")
+    println(replaced)  // Output: There are many apples and 456 oranges.
+
+3. Using Groups
+--------------------------------------------
+You can use groups to capture parts of the matched string:
+
+    val pattern = "(\\d+) apples".toRegex()
+    val input = "There are 123 apples and 456 oranges."
+
+    val match = pattern.find(input)
+    if (match != null) {
+        println(match.groups[1]?.value)  // Output: 123
+    }
+
+4. Options and Flags
+--------------------------------------------
+You can use various options like case insensitivity:
+
+
+    val pattern = "hello".toRegex(RegexOption.IGNORE_CASE)
+    val input = "Hello world"
+
+    val isMatch = pattern.containsMatchIn(input)
+    println(isMatch)  // Output: true
+
+5. Example: Validating Email Addresses
+---------------------------------------------------
+Here's an example of a regular expression to validate email addresses:
+
+    val emailPattern = "^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+$".toRegex()
+    val email = "example@example.com"
+
+    val isValidEmail = emailPattern.matches(email)
+    println(isValidEmail)  // Output: true
+
+Summary
+-----------------------------------------------------
+Kotlin's regular expressions offer robust capabilities for pattern matching and text manipulation.
+Here are the key methods and concepts:
+
+Creating Regex: Using toRegex() or Regex().
+Matching: matches(), containsMatchIn().
+Finding: find(), findAll().
+Replacing: replace(), replaceFirst().
+Groups: Accessing captured groups using groups.
+Options: Using RegexOption for flags like IGNORE_CASE.
+Regular expressions are a powerful tool, and understanding how to use them effectively can significantly enhance your text processing capabilities in Kotlin.
+
+
+
+1. Creating a Regex
+----------------------------------------
+Regex(pattern: String): Creates a regex with the specified pattern.
+Regex(pattern: String, options: Set<RegexOption>): Creates a regex with the specified pattern and options.
+toRegex(): Converts a string to a regex.
+2. Matching Methods
+matches(input: CharSequence): Boolean: Checks if the entire input matches the pattern.
+containsMatchIn(input: CharSequence): Boolean: Checks if the pattern can be found anywhere in the input.
+matchEntire(input: CharSequence): MatchResult?: Tries to match the entire input. Returns a match result or null.
+3. Finding Methods
+find(input: CharSequence, startIndex: Int = 0): MatchResult?: Finds the first occurrence of the pattern in the input starting from startIndex.
+findAll(input: CharSequence, startIndex: Int = 0): Sequence<MatchResult>: Finds all occurrences of the pattern in the input starting from startIndex.
+4. Replacing Methods
+replace(input: CharSequence, replacement: String): String: Replaces all occurrences of the pattern in the input with the replacement string.
+replaceFirst(input: CharSequence, replacement: String): String: Replaces the first occurrence of the pattern in the input with the replacement string.
+replace(input: CharSequence, transform: (MatchResult) -> CharSequence): String: Replaces all occurrences of the pattern using a transformation function.
+5. Splitting Methods
+split(input: CharSequence, limit: Int = 0): List<String>: Splits the input around matches of the pattern. The limit parameter controls the number of results.
+6. Options (RegexOption)
+IGNORE_CASE: Enables case-insensitive matching.
+MULTILINE: Changes the meaning of ^ and $ to match the start and end of each line.
+LITERAL: Treats the pattern as a literal string.
+UNIX_LINES: Changes the meaning of . to match only the \n line terminator.
+COMMENTS: Permits whitespace and comments in the pattern.
+DOT_MATCHES_ALL: Allows . to match any character including line terminators.
+CANON_EQ: Enables canonical equivalence.
+7. MatchResult Methods
+value: The matched part of the input.
+range: The range of the matched part in the input.
+groups: The matched groups.
+destructured: Provides destructured components of the match.
+next(): MatchResult?: Finds the next match, if any.
+8. Extensions for String
+matches(regex: Regex): Boolean: Checks if the entire string matches the regex.
+contains(regex: Regex): Boolean: Checks if the regex can be found anywhere in the string.
+replace(regex: Regex, replacement: String): String: Replaces all occurrences of the regex with the replacement string.
+replaceFirst(regex: Regex, replacement: String): String: Replaces the first occurrence of the regex with the replacement string.
+replace(regex: Regex, transform: (MatchResult) -> CharSequence): String: Replaces all occurrences of the regex using a transformation function.
+split(regex: Regex, limit: Int = 0): List<String>: Splits the string around matches of the regex.
+9. Constructors for Regex
+Regex.fromLiteral(literal: String): Regex: Creates a regex from the literal string.
+Regex.escape(literal: String): String: Escapes the literal string for use in a regex.
+Regex.escapeReplacement(literal: String): String: Escapes the literal string for use as a replacement in a regex.
+Example Usage
+kotlin
+Copy code
+fun main() {
+    val pattern = "\\d+".toRegex()  // Matches one or more digits
+    val input = "There are 123 apples and 456 oranges."
+
+    // Check if input contains the pattern
+    val containsDigits = pattern.containsMatchIn(input)
+    println(containsDigits)  // Output: true
+
+    // Find first match
+    val firstMatch = pattern.find(input)
+    println(firstMatch?.value)  // Output: 123
+
+    // Find all matches
+    val allMatches = pattern.findAll(input)
+    for (match in allMatches) {
+        println(match.value)  // Output: 123 and 456
+    }
+
+    // Replace all matches
+    val replaced = pattern.replace(input, "many")
+    println(replaced)  // Output: There are many apples and many oranges.
+
+    // Replace first match
+    val replaceFirst = pattern.replaceFirst(input, "many")
+    println(replaceFirst)  // Output: There are many apples and 456 oranges.
+
+    // Split by pattern
+    val splitResult = pattern.split(input)
+    println(splitResult)  // Output: [There are ,  apples and ,  oranges.]
+}
+This comprehensive list should cover all the essential methods and options for using regular expressions in Kotlin.
+
+example on each
+ChatGPT
+Sure! Here are examples for each key method and property provided by Kotlin's Regex class:
+
+1. Creating a Regex
+Using Regex(pattern: String)
+kotlin
+Copy code
+val regex = Regex("hello")
+println(regex.pattern)  // Output: hello
+Using Regex(pattern: String, options: Set<RegexOption>)
+kotlin
+Copy code
+val regex = Regex("hello", setOf(RegexOption.IGNORE_CASE))
+println(regex.pattern)  // Output: hello
+Using toRegex()
+kotlin
+Copy code
+val regex = "hello".toRegex()
+println(regex.pattern)  // Output: hello
+2. Matching Methods
+matches(input: CharSequence): Boolean
+kotlin
+Copy code
+val regex = "hello".toRegex()
+println(regex.matches("hello"))  // Output: true
+println(regex.matches("Hello"))  // Output: false
+containsMatchIn(input: CharSequence): Boolean
+kotlin
+Copy code
+val regex = "hello".toRegex()
+println(regex.containsMatchIn("say hello"))  // Output: true
+matchEntire(input: CharSequence): MatchResult?
+kotlin
+Copy code
+val regex = "hello".toRegex()
+println(regex.matchEntire("hello world"))  // Output: null
+println(regex.matchEntire("hello")?.value)  // Output: hello
+3. Finding Methods
+find(input: CharSequence, startIndex: Int = 0): MatchResult?
+kotlin
+Copy code
+val regex = "\\d+".toRegex()  // Matches one or more digits
+val input = "There are 123 apples and 456 oranges."
+
+val match = regex.find(input)
+println(match?.value)  // Output: 123
+findAll(input: CharSequence, startIndex: Int = 0): Sequence<MatchResult>
+kotlin
+Copy code
+val regex = "\\d+".toRegex()
+val input = "There are 123 apples and 456 oranges."
+
+val matches = regex.findAll(input)
+for (match in matches) {
+    println(match.value)  // Output: 123 and 456
+}
+4. Replacing Methods
+replace(input: CharSequence, replacement: String): String
+kotlin
+Copy code
+val regex = "\\d+".toRegex()
+val input = "There are 123 apples and 456 oranges."
+
+val replaced = regex.replace(input, "many")
+println(replaced)  // Output: There are many apples and many oranges.
+replaceFirst(input: CharSequence, replacement: String): String
+kotlin
+Copy code
+val regex = "\\d+".toRegex()
+val input = "There are 123 apples and 456 oranges."
+
+val replaced = regex.replaceFirst(input, "many")
+println(replaced)  // Output: There are many apples and 456 oranges.
+replace(input: CharSequence, transform: (MatchResult) -> CharSequence): String
+kotlin
+Copy code
+val regex = "\\d+".toRegex()
+val input = "There are 123 apples and 456 oranges."
+
+val replaced = regex.replace(input) { matchResult ->
+    "number(${matchResult.value})"
+}
+println(replaced)  // Output: There are number(123) apples and number(456) oranges.
+5. Splitting Methods
+split(input: CharSequence, limit: Int = 0): List<String>
+kotlin
+Copy code
+val regex = "\\s+".toRegex()  // Matches one or more whitespace characters
+val input = "This is a test."
+
+val result = regex.split(input)
+println(result)  // Output: [This, is, a, test.]
+6. Options (RegexOption)
+IGNORE_CASE
+kotlin
+Copy code
+val regex = "hello".toRegex(setOf(RegexOption.IGNORE_CASE))
+println(regex.containsMatchIn("Hello"))  // Output: true
+MULTILINE
+kotlin
+Copy code
+val regex = "^hello".toRegex(setOf(RegexOption.MULTILINE))
+val input = """
+hello world
+Hello there
+hello again
+""".trimIndent()
+
+val matches = regex.findAll(input)
+for (match in matches) {
+    println(match.value)  // Output: hello, hello
+}
+7. MatchResult Methods
+value
+kotlin
+Copy code
+val regex = "\\d+".toRegex()
+val input = "There are 123 apples."
+
+val match = regex.find(input)
+println(match?.value)  // Output: 123
+range
+kotlin
+Copy code
+val regex = "\\d+".toRegex()
+val input = "There are 123 apples."
+
+val match = regex.find(input)
+println(match?.range)  // Output: 10..12
+groups
+kotlin
+Copy code
+val regex = "(\\d+) apples".toRegex()
+val input = "There are 123 apples."
+
+val match = regex.find(input)
+println(match?.groups?.get(1)?.value)  // Output: 123
+destructured
+kotlin
+Copy code
+val regex = "(\\d+) apples".toRegex()
+val input = "There are 123 apples."
+
+val match = regex.find(input)
+val (number) = match?.destructured ?: error("No match")
+println(number)  // Output: 123
+next()
+kotlin
+Copy code
+val regex = "\\d+".toRegex()
+val input = "123 and 456 and 789"
+
+var match = regex.find(input)
+while (match != null) {
+    println(match.value)
+    match = match.next()
+}
+// Output: 123, 456, 789
+8. Extensions for String
+matches(regex: Regex): Boolean
+kotlin
+Copy code
+val regex = "\\d+".toRegex()
+println("123".matches(regex))  // Output: true
+println("abc".matches(regex))  // Output: false
+contains(regex: Regex): Boolean
+kotlin
+Copy code
+val regex = "\\d+".toRegex()
+println("There are 123 apples".contains(regex))  // Output: true
+replace(regex: Regex, replacement: String): String
+kotlin
+Copy code
+val regex = "\\d+".toRegex()
+val input = "There are 123 apples and 456 oranges."
+
+val replaced = input.replace(regex, "many")
+println(replaced)  // Output: There are many apples and many oranges.
+replaceFirst(regex: Regex, replacement: String): String
+kotlin
+Copy code
+val regex = "\\d+".toRegex()
+val input = "There are 123 apples and 456 oranges."
+
+val replaced = input.replaceFirst(regex, "many")
+println(replaced)  // Output: There are many apples and 456 oranges.
+replace(regex: Regex, transform: (MatchResult) -> CharSequence): String
+kotlin
+Copy code
+val regex = "\\d+".toRegex()
+val input = "There are 123 apples and 456 oranges."
+
+val replaced = input.replace(regex) { matchResult ->
+    "number(${matchResult.value})"
+}
+println(replaced)  // Output: There are number(123) apples and number(456) oranges.
+split(regex: Regex, limit: Int = 0): List<String>
+kotlin
+Copy code
+val regex = "\\s+".toRegex()  // Matches one or more whitespace characters
+val input = "This is a test."
+
+val result = input.split(regex)
+println(result)  // Output: [This, is, a, test.]
+9. Constructors for Regex
+Regex.fromLiteral(literal: String): Regex
+kotlin
+Copy code
+val regex = Regex.fromLiteral("hello")
+println(regex.matches("hello"))  // Output: true
+Regex.escape(literal: String): String
+kotlin
+Copy code
+val literal = "hello.?"
+val escaped = Regex.escape(literal)
+println(escaped)  // Output: hello\.?
+Regex.escapeReplacement(literal: String): String
+kotlin
+Copy code
+val literal = "$10"
+val escapedReplacement = Regex.escapeReplacement(literal)
+println(escapedReplacement)  // Output: \$10
+These examples should help you understand how to use each method and property provided by Kotlin's Regex class.
+
+
+
+
+
+
+
+
+
+ChatGPT can make mistakes. Check im

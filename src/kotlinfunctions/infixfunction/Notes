@@ -1,0 +1,155 @@
+In Kotlin, an infix function is a special kind of function that allows you to call it using infix notation.
+
+           Infix notation means that you can call the function without using the traditional dot-and-brackets syntax, and
+           without needing to specify the function name.
+
+           Instead, you can write the function call between the two operands.
+
+           Here's a simple example to illustrate infix functions in Kotlin:
+
+           class Person(val name: String, val age: Int) {
+               infix fun isOlderThan(other: Person): Boolean {
+                   return this.age > other.age
+               }
+           }
+
+           fun main() {
+               val john = Person("John", 30)
+               val mary = Person("Mary", 25)
+
+               println("${john.name} is older than ${mary.name}: ${john isOlderThan mary}")
+           }
+
+--------------------------------------------------------------------------------------------------
+
+ a functions marked with infix keyword can also be called using infix notation means calling without
+using parenthesis and dot.
+
+There are two types of infix function notation in Kotlin-
+----------------------------------------------------------
+    Standard library infix function notation
+    User defined infix function notation
+
+
+Standard library infix function notation –
+---------------------------------------------
+When we call operators like and, or , shr, shl etc then compiler looks for the function and calls the desired one.
+
+There is a number of standard library infix notations functions but we will discuss here some of them.
+Let’s discuss some of infix notations one by one.
+1. Kotlin program using bitwise and operator –
+
+
+fun main(args: Array<String>) {
+    var a = 15
+    var b = 12
+    var c = 11
+    // call using dot and parenthesis
+    var result1 =(a > b).and(a > c)
+    println("Boolean result1 = $result1")
+    // call using infix notation
+    var result2 =(a > b) and (a > c)
+    println("Boolean result1 = $result2")
+}
+Output:
+
+Boolean result1 = true
+Boolean result1 = true
+Explanation:
+
+Here, we have called the a.and(b) function using infix (a and b).
+
+Both produce the same result in the standard output.
+
+2. Kotlin program of using signed shift right(shr) operator –
+------------------------------------------------------------------
+fun main(args: Array<String>) {
+    var a = 8
+
+    // // call using infix notation
+    var result1 = a shr 2
+    println("Signed shift right by 2 bit: $result1")
+    // call using dot and parenthesis
+    var result2 = a.shr(1)
+    println("Signed shift right by 1 bit: $result2")
+}
+Output:
+
+
+Signed shift right by 2 bit: 2
+Signed shift right by 1 bit: 4
+Explanation:
+In the above program, we have used signed shift operator. First, performed the operation using the infix notation
+then performed using dot and parenthesis.
+
+If we signed shift the value by 2 bits then 23=8 becomes 2(3-2=1)=2.
+
+3. Kotlin program of using increment and decrement operators –
+-----------------------------------------------------------------
+
+fun main(args: Array<String>) {
+    var a = 8
+    var b = 4
+
+    println(++a)      // call using infix notation
+    println(a.inc())  // call using dot and parenthesis
+    println(--b)      // call using infix notation
+    println(b.dec())  // call using dot and parenthesis
+}
+Output:
+
+
+9
+10
+3
+2
+Explanation:
+Here, we have used increment and decrement operators using infix notations.
+++a represents a(8) + 1 so it prints 9
+a.inc() also represents a(9) + 1 so it prints 10
+–b represents b(4) – 1 = 3
+b.dec() also represents b(3)- 1 = 2
+
+
+User defined infix function notation –
+---------------------------------------------------
+We can create own function with infix notation if the function satisfy the following requirements:
+
+It must be member function or extension function
+It must accepts a single parameter
+The parameter must not accept variable number of arguments and must have no default value
+It must be marked with infix keyword
+Kotlin program of creating square function with infix notation –
+
+
+
+class math {
+    // user defined infix member function
+    infix fun square(n : Int): Int{
+        val num = n * n
+        return num
+    }
+}
+fun main(args: Array<String>) {
+   val m = math()
+    // call using infix notation
+    val result = m square 3
+    print("The square of a number is: "+result)
+}
+Output:
+
+
+The square of a number is: 9
+Explanation:
+In the above program, we have created own infix notation function (m square 3).
+1. First of all, we defined the infix the infix notation function within a class math because it must be member function.
+2. infix keyword used to mark the function.
+3. It contains only one parameter and having no default value and function return type is also Integer.
+
+
+
+square(n : Int):Int
+Then, we create an object for the class math()
+and called the function using infix notation-
+
+

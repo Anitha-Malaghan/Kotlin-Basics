@@ -1,0 +1,28 @@
+Filter and Map in Kotlin:
+-------------------------------------------
+Filter:
+-------------------------------------------
+The filter function is used to filter elements from a collection based on a predicate (a condition).
+
+It returns a new collection containing only the elements that satisfy the given predicate.
+
+    val numbers = listOf(1, 2, 3, 4, 5, 6)
+    val evenNumbers = numbers.filter { it % 2 == 0 }
+    println(evenNumbers) // Output: [2, 4, 6]
+
+Map:
+--------------------------------------------
+
+The map function is used to transform each element of a collection into another form based on a transformation
+function.
+
+It returns a new collection containing the transformed elements.
+The signature of the map function is:
+
+    val numbers = listOf(1, 2, 3, 4, 5)
+    val squaredNumbers = numbers.map { it * it }
+    println(squaredNumbers) // Output: [1, 4, 9, 16, 25]
+
+These functions are quite versatile and can be combined to perform complex transformations on collections with
+ease.
+

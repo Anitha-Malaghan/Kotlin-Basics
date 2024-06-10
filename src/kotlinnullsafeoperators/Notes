@@ -1,0 +1,66 @@
+Kotlin null safe operators:
+----------------------------------------------------------------------------------------------------------------
+In Kotlin, null safety is a key feature designed to prevent null pointer exceptions, which are a common source of
+bugs in many programming languages.
+
+Kotlin provides several null-safe operators and techniques to handle nullability effectively.
+-------------------------------------------------------------------------------------------------------------------
+Why?
+-------------------------------------------------------------------------------------------------------------------
+null-safe operators play a critical role in Kotlin by promoting null safety,
+   - improving code robustness,
+   - enhancing code clarity,
+   - simplifying error detection and debugging,
+   - enabling better tooling support,
+   - facilitating interoperability,
+   - supporting functional programming paradigms.
+
+They help developers write safer, more reliable, and more maintainable code by effectively handling null values
+in a predictable and controlled manner.
+
+1. Safe Call Operator (?.):
+-------------------------------------------------------------------------------------------------------------------
+-The safe call operator ?. allows you to safely access properties or call methods on a potentially null object.
+
+-If the object is not null, the property or method call is executed.
+
+If the object is null, the expression returns null instead of throwing a null pointer exception.
+
+    val length: Int? = str?.length
+
+2. Safe Call with Let:
+------------------------------------------------------------------------------------------------------------------
+Combining the safe call operator ?. with the let function allows you to perform a chain of operations on a
+potentially not null object, ensuring safety at each step.
+
+    str?.let {
+        println(it.length)
+        // Other operations...
+    }
+
+3. Elvis Operator (?:):
+----------------------------------------------------------------------------------------------------------------
+-The elvis operator ?: is used to provide a default value when an expression evaluates to null.
+
+-If the expression on the left-hand side of ?: is not null, it is returned. Otherwise, the expression on the
+right-hand side is returned.
+
+    val length: Int = str?.length ?: -1
+
+4. Not-null Assertion Operator (!!):
+-------------------------------------------------------------------------------------------------------------------
+-The not-null assertion operator !! is used to tell the compiler that a certain expression is not null, and it
+ should throw a null pointer exception if it evaluates to null.
+
+-Use with caution, as it bypasses the null safety checks provided by Kotlin and can lead to null pointer exceptions.
+
+    val length: Int = str!!.length
+
+
+These null-safe operators and techniques provided by Kotlin enable you to write robust and concise code while
+effectively handling nullability.
+
+ By leveraging these features, you can minimize the risk of null pointer exceptions and write more reliable software.
+
+
+

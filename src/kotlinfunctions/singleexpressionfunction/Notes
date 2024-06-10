@@ -1,0 +1,12 @@
+Single Expression Functions
+------------------------------------------
+Kotlin allows functions to be defined with a single expression
+
+If a function consists of a single expression, it can be defined in a more concise way using the = symbol.
+
+    fun multiply(a: Int, b: Int) = a * b
+
+    fun main() {
+        val result = multiply(4, 5)
+        println("Product: $result")
+    }

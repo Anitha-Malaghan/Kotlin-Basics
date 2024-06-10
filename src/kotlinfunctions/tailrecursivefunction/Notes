@@ -1,0 +1,12 @@
+Tail Recursive Function
+----------------------------------
+ Tail recursion is a special case of recursion where the recursive call is the last operation in the function.
+
+     tailrec fun factorial(n: Int, acc: Int = 1): Int {
+         return if (n <= 1) acc else factorial(n - 1, n * acc)
+     }
+
+     fun main() {
+         val result = factorial(5)
+         println("Factorial: $result")
+ }

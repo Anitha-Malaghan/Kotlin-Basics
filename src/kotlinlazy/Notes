@@ -1,0 +1,67 @@
+Kotlin lazy:
+------------------------------------------------------------------------------------------------------------------
+-In Kotlin, the lazy function is used to create properties whose values are computed only upon first access.
+
+-This can be useful for properties that are computationally expensive to initialize or are only needed under
+certain conditions.
+
+-‘lazy initialization’ was designed to prevent unnecessary initialization of objects.
+
+-variables will not be initialised unless you use it in your code
+
+-It is initialized only once. Next time when you use it, you get the value from cache memory.
+
+-It is thread safe
+
+-It is initialized in the thread where it is used for the first time.
+
+-Other threads use the same value stored in the cache
+
+-The variable can be nullable or non-nullable
+
+
+Here's a simple demo:
+---------------------------------------------------------------------------------------------------------------------
+
+    val lazyValue: String by lazy {
+        println("Computed!") // This will only be printed the first time lazyValue is accessed
+        "Hello"
+    }
+
+    fun main() {
+        println("Before accessing lazyValue")
+        println(lazyValue) // Accessing lazyValue for the first time
+        println("After accessing lazyValue")
+        println(lazyValue) // Accessing lazyValue again
+    }
+    Output:
+
+    mathematica
+    Copy code
+    Before accessing lazyValue
+    Computed!
+    Hello
+    After accessing lazyValue
+    Hello
+    Explanation:
+
+The lazy function takes a lambda argument and returns an instance of Lazy<T>, which holds the value computed by
+the lambda.
+
+In the example, lazyValue is a property that is computed by the lambda { println("Computed!"); "Hello" }.
+
+The lambda is executed the first time lazyValue is accessed, and its result is stored. Subsequent accesses to
+lazyValue return the stored value without re-computing the lambda.
+
+In the main function, "Before accessing lazyValue" is printed before accessing lazyValue, and "Computed!" is
+printed because the lambda is computed the first time.
+
+Then "Hello" is printed, indicating the result of the lambda. Similarly, "After accessing lazyValue" is printed,
+followed by another "Hello" when lazyValue is accessed again, showing that the lambda is not recomputed.
+
+This demonstrates how lazy properties can defer computation until the value is actually needed, improving
+performance in cases where initialization is expensive or unnecessary until the property is accessed.
+
+
+
+

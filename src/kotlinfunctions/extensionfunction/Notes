@@ -1,0 +1,90 @@
+-------------------------------------------------
+Extension Functions
+-------------------------------------------------
+Kotlin allows you to extend a class with new functions without modifying the original class.
+
+Extension functions in Kotlin allow you to add new functions to existing classes without modifying their source
+code.
+
+**************************************************************************************************************
+THE EXTENSION FUNCTION IS SPECIFICALLY TIED TO THE STRING CLASS AND IS CALLED DIRECTLY ON INSTANCES OF STRING
+**************************************************************************************************************
+
+They are particularly useful for enhancing the functionality of standard library classes.
+    fun String.addExclamation(): String {
+            return this + "!"
+        }
+
+        val excited = "Hello".addExclamation()  // "Hello!"
+
+Here’s how you can create an extension function to convert a string to camel case:
+
+kotlin
+Copy code
+// Define the extension function
+fun String.toCamelCase(): String {
+    // Split the input string by spaces and other delimiters
+    val words = this.split(Regex("[\\s-_]+")).filter { it.isNotEmpty() }
+
+    if (words.isEmpty()) return ""
+
+    // Convert first word to lowercase and the rest to capitalize
+    val camelCase = StringBuilder(words.first().toLowerCase())
+    for (i in 1 until words.size) {
+        camelCase.append(words[i].capitalize())
+    }
+
+    return camelCase.toString()
+}
+
+// Example usage
+fun main() {
+    val example1 = "hello world"
+    val example2 = "convert_to_camel_case"
+    val example3 = "this-is-a-test"
+
+    println(example1.toCamelCase()) // helloWorld
+    println(example2.toCamelCase()) // convertToCamelCase
+    println(example3.toCamelCase()) // thisIsATest
+}
+Explanation
+Extension Function Definition:
+
+The extension function toCamelCase is defined for the String class.
+Inside the function, this refers to the instance of the string on which the function is called.
+Splitting and Filtering:
+
+this.split(Regex("[\\s-_]+")) splits the string by spaces, hyphens, and underscores.
+filter { it.isNotEmpty() } ensures that only non-empty words are processed.
+Building the Camel Case String:
+
+The first word is converted to lowercase using toLowerCase().
+Each subsequent word is capitalized using capitalize() and appended to the StringBuilder.
+Usage:
+
+The extension function can be called directly on any String instance, making the code more readable and concise.
+This approach provides a clean and reusable way to convert strings to camel case using Kotlin's extension functions.
+
+can we call extension function apart from the string?
+ChatGPT
+No, extension functions in Kotlin are defined to be called on instances of the class they extend. For example, if you define an extension function for the String class, you can only call it on String instances.
+
+Here's an example:
+
+kotlin
+Copy code
+fun String.extensionFunction() {
+    println("Extension function called on string: $this")
+}
+
+fun main() {
+    val myString = "Hello"
+    myString.extensionFunction() // This is valid
+
+    val myInt = 10
+    // myInt.extensionFunction() // This will cause a compilation error because the extension function is not defined for Int
+}
+In this example, extensionFunction is defined as an extension function for the String class, so it can only be called on String instances like myString.
+
+Attempting to call an extension function on an instance of a type for which the extension function is not defined will result in a compilation error.
+

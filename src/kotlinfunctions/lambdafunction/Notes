@@ -1,0 +1,9 @@
+ Lambda Function:
+------------------------------
+A lambda function is an anonymous function that can be used as an expression.
+
+fun main() {
+    val square: (Int) -> Int = { x -> x * x }
+    val result = square(7)
+    println("Square: $result")
+}

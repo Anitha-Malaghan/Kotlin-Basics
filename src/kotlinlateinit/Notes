@@ -1,0 +1,43 @@
+ Lateinit Keyword:
+ ------------------------------------------------------------------------------------------------------------------
+ In Kotlin, the lateinit keyword is used to declare properties that are not initialized when they are declared
+ but are guaranteed to be initialized before being accessed.
+
+ It stands for "late initialization."
+ ------------------------------------------------------------------------------------------------------------------
+ Why lateinit is needed:
+ ------------------------------------------------------------------------------------------------------------------
+-Sometimes, it's not possible or convenient to initialize a property immediately when it's declared,
+ especially when the initialization requires complex logic or depends on external factors.
+
+-lateinit allows you to defer the initialization of properties until a later point in the program, typically
+during runtime when the initialization conditions are met.
+
+     class Example {
+         lateinit var name: String // Declaring a property with lateinit
+     }
+
+     fun main() {
+         val example = Example()
+         example.name = "John" // Late initialization
+         println(example.name) // Accessing the property after initialization
+     }
+------------------------------------------------------------------------------------------------------------------
+ When to Use lateinit:
+-----------------------------------------------------------------------------------------------------------------
+ Use lateinit when you need to initialize a property later in the program, typically due to dependencies,
+ initialization order, or external data loading.
+
+ It's important to ensure that the property is initialized before accessing it to avoid lateinit initialization
+ exceptions.
+
+--------------------------------------------------------------------------------------------------------------------
+Summary
+--------------------------------------------------------------------------------------------------------------------
+ lateinit used only with mutable data type [ var ]
+
+ lateinit used only with non-nullable data type
+
+ lateinit values must be initialised before you use it
+
+ If we try to access lateinit variable without initializing it then it throws "UninitializedPropertyAccessException"

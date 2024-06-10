@@ -1,0 +1,359 @@
+Kotlin Exception
+-------------------------------------------------------------------------------------------------------------------
+*** It is an object which is thrown at runtime which disrupts the normal flow of the program. ***
+
+Kotlin has a robust exception handling mechanism that is influenced by Java but offers some unique features.
+
+Although Kotlin inherits the concept of exception from Java, it doesn’t support checked exceptions like Java.
+
+The checked exceptions are considered a controversial feature in Java. It decreases developer productivity
+without any additional increase in code quality.
+
+Among other issues, checked exceptions also lead to boilerplate code, difficulty while using lambda expressions.
+
+So, like many other modern programming languages, the Kotlin developers also decided
+against including checked exceptions as a language feature.
+
+Here's a detailed overview of Kotlin exceptions:
+
+Throwable:
+----------------
+    *** Throwable is the superclass of all errors and exceptions and It is a direct subclass of Object ***
+
+
+
+1. Exception Hierarchy
+--------------------------------------
+In Kotlin, exceptions are represented by classes that inherit from the Throwable class.
+
+In Kotlin, there are only unchecked exceptions that are thrown during the runtime execution of the program.
+
+All exception classes descend from the class Throwable.
+
+Kotlin uses the throw keyword to throw an exception object.
+
+2. Try-Catch Block
+--------------------------------------
+We can use the try-catch block for exception handling in Kotlin. In particular, the code that can throw an
+exception is put inside the try block.
+
+Additionally, the corresponding catch block is used to handle the exception.
+
+As a matter of fact, the try block is always followed by a catch or finally block or both of them.
+
+Let’s take a glance at a try-catch block:
+
+
+    try {
+        val message = "Welcome to Kotlin Tutorials"
+        message.toInt()
+    } catch (exception: NumberFormatException) {
+        // ...
+    }
+
+Try-Catch Block as an Expression
+--------------------------------------------
+An expression may be a combination of one or more values, variables, operators, and functions that execute to
+provide another value. Hence, we can use the try-catch block as an expression in Kotlin.
+
+Furthermore, the return value of the try-catch expression is the last expression of either the try or the catch
+block.
+In the event of an exception, the value of the catch block is returned.
+
+However, the results of the expression are not affected by the finally block.
+
+Here’s how we can use try-catch as an expression:
+
+    val number = try {
+        val message = "Welcome to Kotlin Tutorials"
+        message.toInt()
+    } catch (exception: NumberFormatException) {
+        // ...
+    }
+
+
+Multiple Catch Blocks:
+----------------------------------
+We can use multiple catch blocks together with the try block in Kotlin. Particularly, this is often required
+if we perform different kinds of operations in the try block, which increases the probability of
+catching multiple exceptions.
+
+Besides, we must order all catch blocks from the most specific to the most general exception.
+
+As an example, the catch block for ArithmeticException must precede the catch block for Exception.
+
+Let’s have a look at the way to use multiple catch blocks:
+
+    try {
+        val result = 25 / 0
+        result
+    } catch (exception: NumberFormatException) {
+        // ...
+    } catch (exception: ArithmeticException) {
+        // ...
+    } catch (exception: Exception) {
+        // ...
+    }
+
+Nested Try-Catch Block:
+---------------------------
+We can use a nested try-catch block where we implement a try-catch block inside another try block.
+For instance, this can be required when a block of code may throw an exception and within that block of code,
+ another statement may additionally throw an exception.
+
+Let’s see how we can use the nested try-catch block:
+
+    try {
+        val firstNumber = 50 / 2 * 0
+        try {
+            val secondNumber = 100 / firstNumber
+            secondNumber
+        } catch (exception: ArithmeticException) {
+            // ...
+        }
+    } catch (exception: NumberFormatException) {
+        // ...
+    }
+
+Finally Block
+-------------------------------
+We can use the finally block to always execute code no matter whether an exception is handled or not.
+Besides, we can use the finally block with the try block by omitting the catch block.
+
+Let’s take a look into the finally block:
+
+    try {
+        val message = "Welcome to Kotlin Tutorials"
+        message.toInt()
+    } catch (exception: NumberFormatException) {
+        // ...
+    } finally {
+        // ...
+    }
+
+Throw Keyword:
+--------------------------------------
+We can use the throw keyword in Kotlin to throw a certain exception or a custom exception.
+
+Here’s how we can use the throw keyword in Kotlin:
+
+    val message = "Welcome to Kotlin Tutorials"
+    if (message.length > 10) throw IllegalArgumentException("String is invalid")
+    else return message.length
+
+We can also use throw as an expression in Kotlin.
+For instance, it can be used as a part of the Elvis expression:
+
+    val message: String? = null
+    return message?.length ?: throw IllegalArgumentException("String is null")
+
+
+The throw expression returns a value of type Nothing. This special type has no values and is used to indicate an
+unreachable code block.
+
+In addition, we can also use the Nothing type in a function to indicate that it will always throw an exception:
+
+    fun abstractException(message: String): Nothing {
+        throw RuntimeException(message)
+    }
+
+Throws Annotation
+------------------------
+We can use the @Throws annotation to provide interoperability between Kotlin and Java.
+Since Kotlin doesn’t have checked exceptions, it doesn’t declare exceptions that are thrown.
+
+Let’s define a function in Kotlin:
+
+    fun readFile(): String? {
+        val filePath = null
+        return filePath ?: throw IOException("File path is invalid")
+    }
+
+Now we can call the Kotlin function from Java and catch the exception.
+Here’s how we can write a try-catch in Java:
+
+    try {
+        readFile();
+    }
+    catch (IOException e) {
+        // ...
+    }
+
+The Java compiler will display an error message because the Kotlin function didn’t declare the exception.
+In such cases, we can use the @Throws annotation in Kotlin to handle the error:
+
+@Throws(IOException::class)
+fun readFile(): String? {
+    val filePath = null
+    return filePath ?: throw IOException("File path is invalid")
+}
+
+
+
+2. Throwing Exceptions
+------------------------------------------------------------------------------------------------------------------
+You can throw an exception using the throw keyword:
+
+    fun riskyFunction() {
+        throw Exception("Something went wrong")
+    }
+
+
+3. Catching Exceptions
+------------------------------------------------------------------------------------------------------------------
+To handle exceptions, you use try, catch, and finally blocks:
+
+    fun riskyFunction() {
+        throw Exception("Something went wrong")
+    }
+
+    fun main() {
+        try {
+            riskyFunction()
+        } catch (e: Exception) {
+            println("Caught an exception: ${e.message}")
+        } finally {
+            println("This block always executes")
+        }
+    }
+
+
+
+4. Custom Exceptions
+-------------------------------------------------------------------------------------------------------------------
+You can define custom exceptions by extending the Exception class:
+
+
+    class MyCustomException(message: String) : Exception(message)
+
+    fun riskyFunction() {
+        throw MyCustomException("Custom error occurred")
+    }
+
+    fun main() {
+        try {
+            riskyFunction()
+        } catch (e: MyCustomException) {
+            println("Caught a custom exception: ${e.message}")
+        }
+    }
+
+5. Checked vs. Unchecked Exceptions
+-----------------------------------------------------------------------------------------------------------------
+In Java, exceptions are categorized as checked and unchecked, with checked exceptions requiring explicit handling.
+
+Kotlin does not distinguish between checked and unchecked exceptions, which means you are not forced to catch
+or declare exceptions.
+
+6. Multiple Catch Blocks
+-----------------------------------------------------------------------------------------------------------------
+You can handle different types of exceptions using multiple catch blocks:
+
+    fun main() {
+        try {
+            riskyFunction()
+        } catch (e: IOException) {
+            println("Caught an IOException: ${e.message}")
+        } catch (e: Exception) {
+            println("Caught a general exception: ${e.message}")
+        }
+    }
+
+7. Nested Try-Catch Blocks
+------------------------------------------------------------------------------------------------------------------
+Try-catch blocks can be nested:
+
+fun main() {
+    try {
+        try {
+            riskyFunction()
+        } catch (e: IOException) {
+            println("Caught an IOException inside nested try: ${e.message}")
+        }
+    } catch (e: Exception) {
+        println("Caught an exception: ${e.message}")
+    }
+}
+
+8. Re-throwing Exceptions
+-----------------------------------------------------------------------------------------------------------------
+You can re-throw an exception after catching it:
+
+    fun main() {
+        try {
+            riskyFunction()
+        } catch (e: Exception) {
+            println("Caught an exception: ${e.message}")
+            throw e  // Re-throw the exception
+        }
+    }
+
+
+9. The finally Block
+----------------------------------------------------------------------------------------------------------------
+The finally block always executes, whether an exception is thrown or not:
+
+
+fun main() {
+    try {
+        riskyFunction()
+    } catch (e: Exception) {
+        println("Caught an exception: ${e.message}")
+    } finally {
+        println("This block always executes")
+    }
+}
+
+
+10. Exception Handling Best Practices
+-----------------------------------------------------------------------------------------------------------------
+Handle Specific Exceptions: Catch specific exceptions before general ones to handle them appropriately.
+
+Use finally for Cleanup: Use the finally block to release resources or perform cleanup tasks.
+
+Avoid Swallowing Exceptions: Avoid catching exceptions without handling them or logging the error.
+
+Custom Exception Messages: Provide meaningful messages in custom exceptions to make debugging easier.
+
+Example: Comprehensive Exception Handling
+
+import java.io.IOException
+
+        class MyCustomException(message: String) : Exception(message)
+
+        fun riskyFunction(value: Int) {
+            when (value) {
+                1 -> throw IOException("IO error occurred")
+                2 -> throw MyCustomException("Custom error occurred")
+                else -> throw Exception("General error occurred")
+            }
+        }
+
+        fun main() {
+            try {
+                riskyFunction(1)
+            } catch (e: IOException) {
+                println("Caught an IOException: ${e.message}")
+            } catch (e: MyCustomException) {
+                println("Caught a custom exception: ${e.message}")
+            } catch (e: Exception) {
+                println("Caught a general exception: ${e.message}")
+            } finally {
+                println("This block always executes")
+            }
+        }
+
+
+
+This example covers:
+
+Custom exception creation.
+Throwing different types of exceptions.
+Catching specific exceptions.
+Using the finally block for cleanup.
+
+
+
+References:
+--------------------------------------------
+https://www.baeldung.com/kotlin/exception-handling

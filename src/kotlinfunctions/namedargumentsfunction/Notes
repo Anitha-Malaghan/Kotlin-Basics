@@ -1,0 +1,11 @@
+Named Arguments
+-------------------------------------------------
+Named arguments allow you to specify the values of function parameters by their names.
+
+    fun displayInfo(name: String, age: Int) {
+        println("Name: $name, Age: $age")
+    }
+
+    fun main() {
+        displayInfo(age = 25, name = "Bob")
+    }

@@ -1,0 +1,12 @@
+Higher-Order Function:
+-------------------------------
+A higher-order function is a function that takes functions as parameters or returns a function.
+
+    fun calculate(a: Int, b: Int, operation: (Int, Int) -> Int): Int {
+        return operation(a, b)
+    }
+
+    fun main() {
+        val result = calculate(10, 20) { x, y -> x * y }
+        println("Multiplication Result: $result")
+    }

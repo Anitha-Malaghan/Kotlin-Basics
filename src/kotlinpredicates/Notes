@@ -1,0 +1,44 @@
+Predicates:
+---------------------------------------------------------------------------------------------------------------
+In Kotlin, the functions all, any, count, and find are commonly used with predicates to perform operations
+on collections.
+
+1. all:
+----------
+    The all function returns true if all elements in the collection satisfy the given predicate, otherwise,
+    it returns false.
+
+    val numbers = listOf(2, 4, 6, 8, 10)
+    val allEven = numbers.all { it % 2 == 0 }
+    println(allEven) // Output: true
+
+2 any:
+-----------
+The any function returns true if at least one element in the collection satisfies the given predicate, otherwise,
+ it returns false.
+
+    val numbers = listOf(1, 2, 3, 4, 5)
+    val containsEven = numbers.any { it % 2 == 0 }
+    println(containsEven) // Output: true
+
+3. count:
+-----------
+The count function returns the number of elements in the collection that satisfy the given predicate.
+
+    val numbers = listOf(1, 2, 3, 4, 5)
+    val countEven = numbers.count { it % 2 == 0 }
+    println(countEven) // Output: 2
+
+4.find:
+------------
+The find function returns the first element in the collection that satisfies the given predicate, or null if no
+such element is found.
+
+    val numbers = listOf(1, 2, 3, 4, 5)
+    val firstEven = numbers.find { it % 2 == 0 }
+    println(firstEven) // Output: 2
+
+These functions provide convenient ways to work with predicates and collections in Kotlin, allowing you to perform
+various operations based on specific conditions or criteria.
+
+

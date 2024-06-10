@@ -1,0 +1,15 @@
+------------------------------------------
+Default Arguments Function
+------------------------------------------
+
+Kotlin functions can have default values for parameters.
+
+
+    fun greet(name: String = "Guest") {
+        println("Hello, $name!")
+    }
+
+    fun main() {
+        greet("Alice")
+        greet()
+    }
