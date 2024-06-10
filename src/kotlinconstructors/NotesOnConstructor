@@ -87,14 +87,6 @@ Kotlin’s constructor features offer a more concise and expressive way to initi
 making code easier to read and maintain.
 
 
-
-
-
-
-
-
-
-
     Example
     -----------
     class Car(var brand: String, var model: String, var year: Int)

@@ -12,6 +12,14 @@ that are primarily used to store values.
 
 -This makes data classes very convenient for managing data without having to write boilerplate code.
 ------------------------------------------------------------------------------------------------------------------
+Why do we need it?
+------------------------------------------------------------------------------------------------------------------
+data classes in Kotlin provide a convenient way to represent and work with data, reducing boilerplate code,
+improving code readability, and facilitating immutable data handling.
+
+They are particularly useful for modeling domain objects, transfer objects, and other data-centric structures in
+ your code.
+------------------------------------------------------------------------------------------------------------------
 Syntax for Data Classes
 ------------------------------------------------------------------------------------------------------------------
 -To define a data class in Kotlin, you use the data keyword before the class declaration.

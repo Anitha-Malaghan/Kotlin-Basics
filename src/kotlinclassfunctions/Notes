@@ -133,7 +133,9 @@ calls.
 ------------------------------------------------------------------------------------------------
 Extension Functions
 ------------------------------------------------------------------------------------------------
-Kotlin allows you to extend existing classes with new functionality using extension functions. These functions can be defined outside of the class.
+Kotlin allows you to extend existing classes with new functionality using extension functions.
+
+These functions can be defined outside of the class.
 
     fun ReceiverType.methodName(parameter1: Type1, parameter2: Type2, ...) {
         // Method body

@@ -1,0 +1,195 @@
+------------------------------------------------------------------------------------------
+String Methods/Functions
+------------------------------------------------------------------------------------------
+-There are many string functions available, for example
+
+    1. toUpperCase() and toLowerCase():
+    -------------------------------------
+
+        var txt = "Hello World"
+        println(txt.toUpperCase())   // Outputs "HELLO WORLD"
+        println(txt.toLowerCase())   // Outputs "hello world"
+
+    2. Comparing Strings
+    ----------------------
+    The compareTo(string) function compares two strings and returns 0 if both are equal:
+
+        var txt1 = "Hello World"
+        var txt2 = "Hello World"
+        println(txt1.compareTo(txt2))  // Outputs 0 (they are equal)
+
+    3. Finding a String in a String
+    ----------------------------------
+    The indexOf() function returns the index (the position) of the first occurrence of a
+    specified text in a string (including whitespace):
+
+        var txt = "Please locate where 'locate' occurs!"
+        println(txt.indexOf("locate"))  // Outputs 7
+
+    4. substring
+    -----------------------------------------------
+    Returns a substring from the specified start index to the end index.
+
+        val str = "Hello, Kotlin!"
+        println(str.substring(7, 13)) // Output: Kotlin
+
+    Remember that Kotlin counts positions from zero. 0 is the first position in a string, 1 is the second....
+
+    5. Adding two strings
+    ----------------------------------
+    You can also use the plus() function to concatenate two strings:
+
+        var firstName = "John "
+        var lastName = "Doe"
+        println(firstName.plus(lastName))
+
+    6. contains
+    -----------------------------------
+     Checks if the string contains the specified substring.
+
+       val str = "Hello, Kotlin!"
+       println(str.contains("Kotlin")) // Output: true
+
+    7. startsWith
+    ------------------------------------
+    Checks if the string starts with the specified prefix.
+
+        val str = "Hello, Kotlin!"
+        println(str.startsWith("Hello")) // Output: true
+
+    8. endsWith
+    -------------------------------------
+    Checks if the string ends with the specified suffix.
+
+        val str = "Hello, Kotlin!"
+        println(str.endsWith("Kotlin!")) // Output: true
+
+    9. indexOf
+    -------------------------------------
+    Returns the index of the first occurrence of the specified substring.
+
+        val str = "Hello, Kotlin!"
+        println(str.indexOf("Kotlin")) // Output: 7
+
+    10. lastIndexOf
+    -------------------------------------
+    Returns the index of the last occurrence of the specified substring.
+
+        val str = "Hello, Kotlin! Kotlin!"
+        println(str.lastIndexOf("Kotlin")) // Output: 15
+
+    11. replace
+    ------------------------------------
+    Replaces occurrences of the specified substring with the new string.
+
+        val str = "Hello, Kotlin!"
+        println(str.replace("Kotlin", "World")) // Output: Hello, World!
+
+
+    12. trim
+    --------------------------------------
+    Removes leading and trailing whitespace.
+
+        val str = "   Hello, Kotlin!   "
+        println(str.trim()) // Output: Hello, Kotlin!
+
+    13. split
+    ---------------------------------------
+    Splits the string into a list of substrings based on the specified delimiter.
+
+        val str = "Hello, Kotlin, World"
+        val parts = str.split(", ")
+        println(parts) // Output: [Hello, Kotlin, World]
+
+    14. joinToString
+    ---------------------------------------
+    Creates a string from the elements of a collection, separated by the specified delimiter.
+
+        val list = listOf("Hello", "Kotlin", "World")
+        val result = list.joinToString(", ")
+        println(result) // Output: Hello, Kotlin, World
+
+    15. isEmpty
+    ---------------------------------------
+    Checks if the string is empty.
+
+        val str = ""
+        println(str.isEmpty()) // Output: true
+
+    16. isNotEmpty
+    ---------------------------------------
+    Checks if the string is not empty.
+
+        val str = "Hello"
+        println(str.isNotEmpty()) // Output: true
+
+    17. isBlank
+    --------------------------------------
+    Checks if the string is blank (empty or contains only whitespace).
+
+        val str = "   "
+        println(str.isBlank()) // Output: true
+
+    18. isNotBlank
+    --------------------------------------
+    Checks if the string is not blank.
+
+        val str = "Hello"
+        println(str.isNotBlank()) // Output: true
+
+
+    19. toInt, toLong, toDouble, etc.
+    -----------------------------------------------
+    Converts the string to the specified numeric type.
+
+        val str = "123"
+        println(str.toInt()) // Output: 123
+
+    20. format
+    ----------------------------------------------
+    Formats the string using the specified format.
+
+    val str = "Hello, %s!".format("Kotlin")
+    println(str) // Output: Hello, Kotlin!
+
+    21. substringAfter
+    ----------------------------------------------
+    Returns the substring after the first occurrence of the specified delimiter.
+
+        val str = "Hello, Kotlin!"
+        println(str.substringAfter("Hello, ")) // Output: Kotlin!
+
+    22. substringBefore
+    ----------------------------------------------
+    Returns the substring before the first occurrence of the specified delimiter.
+
+        val str = "Hello, Kotlin!"
+        println(str.substringBefore(", ")) // Output: Hello
+
+    23. repeat
+    ---------------------------------------------
+    Repeats the string the specified number of times.
+
+        val str = "Hi"
+        println(str.repeat(3)) // Output: HiHiHi
+
+    24. repaceFirst
+    -----------------------------------------------
+    To replace the first occurrence of a word in a given string in Kotlin, you can use the replaceFirst function
+    provided by the Kotlin standard library. This function replaces the first occurrence of a substring that
+    matches a given regular expression with a replacement string.
+
+    fun main() {
+        val originalString = "This is a test. This is only a test."
+        val wordToReplace = "test"
+        val replacementWord = "example"
+
+        // Use replaceFirst to replace the first occurrence of the word
+        val modifiedString = originalString.replaceFirst(wordToReplace.toRegex(), replacementWord)
+
+        println(modifiedString)
+    }
+
+These are some of the most commonly used String methods in Kotlin.
+
+Each method helps you manipulate and handle strings more effectively in your Kotlin programs.

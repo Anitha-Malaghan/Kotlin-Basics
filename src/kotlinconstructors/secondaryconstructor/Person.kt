@@ -2,17 +2,17 @@ package kotlinconstructors.secondaryconstructor
 
 //Delegation Approach Or Primary and Secondary Constructor with delegation
 class Person {
-    var name: String
+   lateinit var name: String
     var age: Int
 
     // Primary constructor
-    constructor(name: String, age: Int) {
+    constructor(name: String, age: Int=18) {
         this.name = name
         this.age = age
     }
 
     // Secondary constructor
-    constructor(name: String) : this(name, 0) {
+    constructor(name: String) : this(name, 20) {
         println("Person initialized with name = $name and default age = $age")
     }
 }

@@ -1,9 +1,16 @@
 Kotlin Closure
 ---------------------------------------------------------------------------------------------------------------------
+Definition:
+----------------
+Closures are functions that capture and retain variables from their surrounding scope, even after that scope has finished executing.
+
+Purpose:
+----------------
+They allow functions to access and manipulate variables from their enclosing context.
 
 ---------------------------------------------------------------------------------------------------------------------
 Why?
 ---------------------------------------------------------------------------------------------------------------------
--In java you cannot mutate te values of the variables inside lambdas.
+-In java you cannot mutate the values of the variables inside lambdas.
 
 -But in kotlin you can change the values.
