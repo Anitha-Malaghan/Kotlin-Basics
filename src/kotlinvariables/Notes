@@ -94,7 +94,7 @@ Names can contain letters, digits, underscores, and dollar signs
 
 Names should start with a letter
 
-Names can also begin with $ and _ (but we will not use it in this tutorial)
+Names can also begin with $ and _
 
 Names are case sensitive ("myVar" and "myvar" are different variables)
 

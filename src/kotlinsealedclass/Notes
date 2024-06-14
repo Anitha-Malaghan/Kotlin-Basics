@@ -22,7 +22,8 @@ possible subclasses are covered.
 improving code safety.
 
 -Additionally, sealed classes can have parameters and contain their own properties and methods, just like regular
-classes. However, they cannot be instantiated directly, as they are abstract. Instead, you can create instances of sealed class subclasses.
+classes. However, they cannot be instantiated directly, as they are abstract. Instead, you can create instances
+of sealed class subclasses.
 -------------------------------------------------------------------------------------------------------------
 Example
 -------------------------------------------------------------------------------------------------------------

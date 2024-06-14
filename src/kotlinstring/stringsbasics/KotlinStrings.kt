@@ -1,4 +1,4 @@
-package `03`.kotlinstrings.stringsbasics
+package kotlinstring.stringsbasics
 
 fun main() {
     //Declaration and assignment for the variables.

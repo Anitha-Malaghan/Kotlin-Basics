@@ -1,4 +1,4 @@
-package `01`.introduction
+package introduction
 
 import java.util.Scanner
 

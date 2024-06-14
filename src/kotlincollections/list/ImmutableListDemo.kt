@@ -9,11 +9,11 @@ fun main(args: Array<String>){
         println(name)
     }
 
-   /*
-    Error: One of the following candidates is applicable because of receiver type mismatch:
+
+  /* // Error: One of the following candidates is applicable because of receiver type mismatch:
     myArray[0]="Arun"
     for(name in myArray){
         println(name)
-    }
-    */
+    }*/
+
 }

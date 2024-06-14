@@ -114,6 +114,11 @@ Let’s see how we can use the nested try-catch block:
     } catch (exception: NumberFormatException) {
         // ...
     }
+-You can use a try block with either a catch block, a finally block, or both.
+
+-At least one of catch or finally must be present.
+
+-Using a try block without any catch or finally block will result in a compilation error in Kotlin.
 
 Finally Block
 -------------------------------

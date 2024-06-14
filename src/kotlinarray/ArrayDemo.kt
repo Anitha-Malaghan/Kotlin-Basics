@@ -1,4 +1,4 @@
-package `02`.kotinarray
+package kotlinarray
 
 fun main() {
     // Creating arrays

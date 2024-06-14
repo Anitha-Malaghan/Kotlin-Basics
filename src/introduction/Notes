@@ -1,5 +1,15 @@
 Why Kotlin?
 --------------------------------------------------
+Kotlin receives first-class support from Google and has many important language features that Java doesn't have
+        Concise Syntax
+        Interoperability with Java
+        Null Safety
+        Extension Functions
+        Inline functions
+        Coroutines for Asynchronous Programming
+        Tooling and IDE Support
+        Officially Supported for Android Development
+
 Kotlin offers several advantages that make it an attractive choice for many developers and organizations:
 
 Concise Syntax:
@@ -9,13 +19,15 @@ readable code with fewer boilerplate constructs compared to languages like Java.
 
 Interoperability with Java:
 ----------------------------
--Kotlin is fully interoperable with Java, meaning you can use Kotlin alongside existing  Java codebases seamlessly.
+-Kotlin is fully interoperable with Java, meaning you can use Kotlin alongside existing  Java codebases
+seamlessly.
 
 -This makes it easy to adopt Kotlin gradually without rewriting existing code.
 
 Null Safety:
 ----------------------------
--Kotlin's type system incorporates null safety features, which help prevent null pointer exceptions at compile time.
+-Kotlin's type system incorporates null safety features, which help prevent null pointer exceptions at
+compile time.
 -This is achieved through nullable and non-nullable types, along with safe calls and the Elvis
 operator.
 
@@ -25,6 +37,15 @@ Extension Functions:
 modifying their source code.
 
 -This promotes code reuse and enhances the readability of APIs.
+
+-Java does not have a built-in feature called "extension functions" like Kotlin does.
+
+-However, you can achieve similar functionality through other means.
+
+-Extension functions in Kotlin allow you to add new methods to existing classes without modifying their source
+code.
+
+-In Java, this can be mimicked using "static utility methods or default methods in interfaces".
 
 Coroutines for Asynchronous Programming:
 ---------------------------------------
@@ -115,6 +136,53 @@ fun main(){
 
 Before Kotlin version 1.3, it was required to use the main() function with parameters,
 like: fun main(args : Array<String>).
+-------------------------------------------------------------------------------------------------------------------
+*** Why its not good practice to put fun main() inside  a class?  ***
+-------------------------------------------------------------------------------------------------------------------
+In Kotlin, you can actually put the fun main inside a class, but it's not common practice. The reason is that the
+main function is the entry point of a Kotlin application, and it's typically expected to be a top-level function
+(i.e., outside any class or object) to follow the conventional way of starting a program.
+
+Here are a few key points about the main function in Kotlin:
+----------------------------------------------------------------
+
+Top-level Declaration:
+-----------------------------
+    The main function is usually declared at the top level in a Kotlin file.
+
+    This makes it easy for the runtime to locate and execute the function as the entry point of the application.
+
+Entry Point Requirements:
+-----------------------------
+    The Kotlin runtime looks for a top-level main function with the appropriate signature
+    (fun main(args: Array<String>)) to start the application.
+
+    Placing main inside a class would require additional configuration to specify the entry point.
+
+Java Interoperability:
+----------------------------
+    Kotlin applications often interoperate with Java.
+
+    The Java Virtual Machine (JVM) expects the entry point of an application to be a static main method.
+
+    A top-level main function in Kotlin is compiled to a static method, aligning with JVM expectations.
+
+However, if you still want to place the main function inside a class, you can do so by specifying the entry
+point explicitly. Here's how you can achieve this:
+
+        Inside a Class
+        class MyApplication {
+            companion object {
+                @JvmStatic
+                fun main(args: Array<String>) {
+                    println("Hello from main inside a class!")
+                }
+            }
+        }
+        Specifying the Entry Point
+        If you use a build tool like Gradle, you can specify the entry point in your build.gradle file
+
+
 ----------------------------------------------
 Reading input in kotlin
 ----------------------------------------------

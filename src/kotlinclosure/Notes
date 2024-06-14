@@ -2,7 +2,8 @@ Kotlin Closure
 ---------------------------------------------------------------------------------------------------------------------
 Definition:
 ----------------
-Closures are functions that capture and retain variables from their surrounding scope, even after that scope has finished executing.
+Closures are functions that capture and retain variables from their surrounding scope, even after that
+scope has finished executing.
 
 Purpose:
 ----------------

@@ -1,4 +1,4 @@
-package `03`.kotlinstrings.stringmethods
+package kotlinstring.stringmethods
 
 fun main(){
 

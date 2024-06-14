@@ -1,4 +1,4 @@
-Kotlin null safe operators:
+    Kotlin null safe operators:
 ----------------------------------------------------------------------------------------------------------------
 In Kotlin, null safety is a key feature designed to prevent null pointer exceptions, which are a common source of
 bugs in many programming languages.

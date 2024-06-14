@@ -10,7 +10,7 @@ fun main() {
     // Create a mutable list of strings
     val mutableList = mutableListOf<String>()
     println("Enter fruits:")
-    for(index in 0..length-1){
+    for(index in 0 until length){
 
         mutableList.add(scanner.next())
     }
