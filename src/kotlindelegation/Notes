@@ -1,0 +1,57 @@
+Kotlin delegation:
+-------------------------------------------------------------------------------------------------------------------
+In Kotlin, delegation is a powerful feature that allows you to delegate the implementation of interfaces and class
+members to other objects.
+
+It helps in achieving code reuse and composition over inheritance.
+
+-------------------------------------------------------------------------------------------------------------------
+There are two main types of delegation in Kotlin:
+-------------------------------------------------------------------------------------------------------------------
+
+1. Interface Delegation:
+-------------------------------------------------------------------------------------------------------------------
+    Allows an object to delegate the implementation of an interface to another object.
+
+2. Property Delegation:
+-------------------------------------------------------------------------------------------------------------------
+    Allows a property to delegate its getter and setter logic to another object.
+
+1.Interface Delegation
+-------------------------------------------------------------------------------------------------------------------
+Kotlin makes it easy to delegate the implementation of an interface to another object using the by keyword.
+
+Example:
+        interface Worker {
+            fun work()
+            fun takeBreak()
+        }
+
+        class Employee : Worker {
+            override fun work() {
+                println("Employee is working")
+            }
+
+            override fun takeBreak() {
+                println("Employee is taking a break")
+            }
+        }
+
+        class Manager(worker: Worker) : Worker by worker {
+            fun manage() {
+                println("Manager is managing")
+            }
+        }
+
+        fun main() {
+            val employee = Employee()
+            val manager = Manager(employee)
+
+            manager.work()        // Output: Employee is working
+            manager.takeBreak()   // Output: Employee is taking a break
+            manager.manage()      // Output: Manager is managing
+        }
+-------------------------------------------------------------------------------------------------------------------
+In this example, the Manager class delegates the implementation of the Worker interface to an instance of the
+Employee class. When manager.work() and manager.takeBreak() are called, the corresponding methods of the
+Employee instance are invoked.

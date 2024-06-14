@@ -1,0 +1,54 @@
+Operator overloading
+------------------------------------------------------------------------------------------------------------
+Operator overloading in Kotlin allows you to define how operators behave when applied to instances of your
+custom classes.
+
+This feature enables you to write more concise and expressive code by defining meaningful operations for your
+types.
+
+Syntax
+--------------------
+To overload an operator in Kotlin, you define a specific function with a predefined name corresponding to the
+operator you want to overload.
+
+The syntax is:
+-------------------
+    operator fun operatorName(parameters): ReturnType {
+        // Implementation
+    }
+
+
+    Where:
+
+    operator is a keyword indicating that you're overloading an operator.
+
+    operatorName is the name of the operator being overloaded (e.g., plus, minus, times, div, rem, etc.).
+
+    parameters are the parameters of the function representing the operands of the operator.
+
+    ReturnType is the return type of the function.
+
+Example: Overloading the Plus Operator (+)
+
+    class Point(val x: Int, val y: Int) {
+        operator fun plus(other: Point): Point {
+            return Point(x + other.x, y + other.y)
+        }
+    }
+
+    fun main() {
+        val p1 = Point(1, 2)
+        val p2 = Point(3, 4)
+        val sum = p1 + p2
+        println("Sum: (${sum.x}, ${sum.y})") // Output: Sum: (4, 6)
+    }
+Summary
+---------------
+Operator overloading in Kotlin allows you to define custom behavior for operators in your classes, making your
+code more expressive and readable.
+
+It's a powerful feature that simplifies code and makes it more intuitive, especially when working with custom
+data types.
+
+
+

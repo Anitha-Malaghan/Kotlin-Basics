@@ -1,0 +1,315 @@
+---------------------------------------------------------------------------------------------------------------------
+Why Coroutines?
+---------------------------------------------------------------------------------------------------------------------
+if we run long operations on the main thread then main thread gets blocked.
+if the main thread gets blocked for longer time then application gets shutdown
+
+solution 1: Create worker thread:
+---------------------------------------------------------------------------------------------------------------------
+thread 1: network operation
+thread 2: file download
+thread 3: Image Loading
+thread 4:database queries
+
+Example:
+--------------------------------------------------------------------------------------------------------------------
+
+    fun main() {        // Executes in main thread
+
+        println("Main program starts: ${Thread.currentThread().name}")
+
+        thread {    // creates a background thread (worker thread)
+            println("Fake work starts: ${Thread.currentThread().name}")
+            Thread.sleep(1000)      // Pretend doing some work... may be file upload
+            println("Fake work finished: ${Thread.currentThread().name}")
+        }
+
+        println("Main program ends: ${Thread.currentThread().name}")
+    }
+
+Problem:
+---------------------------------------------------------------------------------------------------------------------
+There is a limit on creating background threads because each thread consumes system resources, and the process of
+creating and managing threads is resource-intensive. Excessive thread creation can lead to increased memory usage,
+potentially causing the device to run out of memory and resulting in application crashes.
+
+
+---------------------------------------------------------------------------------------------------------------------
+solution 2: Kotlin Coroutines:
+---------------------------------------------------------------------------------------------------------------------
+-Kotlin coroutines are a powerful feature for asynchronous programming, allowing you to write
+non-blocking, concurrent code in a straightforward and readable manner.
+
+-Coroutines simplify managing tasks like network requests, database operations, or any
+long-running tasks that you don't want to block the main thread.
+
+Key Concepts
+---------------------------------------------------------------------------------------------------------------------
+1. Coroutine Scope:
+-------------------
+    Coroutines' lifecycle is defined by their scope, with two common scopes being
+
+    GlobalScope for global coroutines:
+        -which have a lifetime equivalent to the entire application
+
+    CoroutineScope for structured concurrency:
+        -where coroutines are tied to a specific scope and are automatically cancelled when the scope is cancelled or
+         completes."
+
+
+2. Coroutine Builder:
+-----------------------
+    Functions like
+      i. launch:
+      -------------------------
+      Starts a new coroutine without blocking the current thread, typically used for fire-and-forget tasks.
+
+      ii. async:
+      -------------------------
+      Launches a coroutine that computes a result asynchronously, returning a Deferred value that can be used to
+      obtain the result.
+      Deferred: A Deferred is a non-blocking cancellable future that holds a reference to a coroutine's result.
+
+      iii. runBlocking:
+      -------------------------
+      Blocks the current thread until the coroutine inside it completes, often used in main functions or
+      for testing purposes.
+
+    ---------------------------------------------------------------------------------------------------------------------
+    Kotlin Higher Order Function for Coroutines
+    ---------------------------------------------------------------------------------------------------------------------
+
+      i. withTimeout:
+      -------------------------
+      Coroutine builder that executes a coroutine with a specified timeout, throwing a TimeoutCancellationException
+      if the timeout is exceeded.
+
+     ii. withTimeoutOrNull:
+      -------------------------
+      Coroutine builder that executes a coroutine with a specified timeout, returning null
+      if the timeout is exceeded, otherwise returning the result.
+
+3. Suspend Function:
+ ---------------------
+     Functions marked with suspend keyword that can be paused and resumed at a later time.
+            delay(timeMillis: Long)
+            await()
+            yield()
+            join()
+            supervisorScope(block: suspend CoroutineScope.() -> T): T
+            withContext(context: CoroutineContext, block: suspend CoroutineScope.() -> T): T
+            coroutineScope(block: suspend CoroutineScope.() -> T): T
+            withTimeout(timeMillis: Long, block: suspend CoroutineScope.() -> T): T
+            withTimeoutOrNull(timeMillis: Long, block: suspend CoroutineScope.() -> T): T
+
+4.Dispatcher:
+--------------------
+    Determines the thread on which the coroutine runs.
+    Common dispatchers include
+        Dispatchers.Main
+        Dispatchers.IO
+        Dispatchers.Default
+        Dispatchers.Unconfined.
+
+Dispatchers.Main:
+---------------------------------------------------------------------------------------------------------------------
+Used for tasks that need to run on the main thread, typically for updating the UI in Android applications.
+
+Dispatchers.IO:
+---------------------------------------------------------------------------------------------------------------------
+Optimized for offloading blocking I/O operations (e.g., file I/O, network requests) to a shared pool of on-demand
+created threads.
+
+Dispatchers.Default:
+---------------------------------------------------------------------------------------------------------------------
+Used for CPU-intensive work such as sorting large lists or complex calculations, utilizing a shared pool of threads.
+
+Dispatchers.Unconfined:
+---------------------------------------------------------------------------------------------------------------------
+Starts the coroutine in the caller thread but only until the first suspension point, after which it resumes in
+whatever thread is available, not confined to any specific thread.
+
+
+Example Usage
+---------------------------------------------------------------------------------------------------------------------
+1. Basic Coroutine with Launch
+---------------------------------------------------------------------------------------------------------------------
+The launch coroutine builder is used to launch a new coroutine.
+
+It doesn't return a result and is primarily used for jobs that don't require a result.
+
+    import kotlinx.coroutines.*
+
+    fun main() {        // Executes in main thread
+
+        println("Main program starts: ${Thread.currentThread().name}")
+
+        GlobalScope.launch {    // creates a background coroutine that runs on a background thread
+            println("Fake work starts: ${Thread.currentThread().name}")
+            Thread.sleep(1000)      // Pretend doing some work... may be file upload
+            println("Fake work finished: ${Thread.currentThread().name}")
+        }
+
+        // Blocks the current main thread & wait for coroutine to finish (practically not a right way to wait)
+        Thread.sleep(2000)
+        println("Main program ends: ${Thread.currentThread().name}")
+    }
+    -----------------------------------------------------------------------------------
+    import kotlinx.coroutines.*
+
+    fun main() {
+        runBlocking {
+            launch {
+                delay(1000L)
+                println("World!")
+            }
+            println("Hello,")
+        }
+    }
+---------------------------------------------------------------------------------------------------------------------
+2. Async and Await
+---------------------------------------------------------------------------------------------------------------------
+The async builder is used to launch a coroutine that returns a result.
+
+The result can be retrieved using await.
+
+        import kotlinx.coroutines.*
+
+        fun main() = runBlocking {    // Creates a blocking coroutine that executes in current thread (main)
+
+            println("Main program starts: ${Thread.currentThread().name}")  // main thread
+
+            val deferredJob: Deferred<Unit> = async   // Thread: main
+            {
+                println("Fake work starts: ${Thread.currentThread().name}")     // Thread: main
+                delay(1000)   // Coroutine is suspended but Thread: main is free (not blocked)
+                println("Fake work finished: ${Thread.currentThread().name}") // Thread: main
+                15
+            }
+
+            val num: Int = deferredJob.await()  // main thread: wait for coroutine to finish and return data
+
+            println("Main program ends: ${Thread.currentThread().name}")    // main thread
+        }
+
+    ---------------------------------------------------------------------------------------------------
+    import kotlinx.coroutines.*
+
+    fun main() {
+        runBlocking {
+            val deferred = async {
+                delay(1000L)
+                "World!"
+            }
+            println("Hello,")
+            println(deferred.await())
+        }
+    }
+---------------------------------------------------------------------------------------------------------------------
+3. runBlocking:
+---------------------------------------------------------------------------------------------------------------------
+runBlocking is a coroutine builder in Kotlin that is typically used in tests or in the main function
+of Kotlin applications.
+
+It blocks the current thread until all the coroutines launched in its scope are completed.
+
+    import kotlinx.coroutines.*
+
+    fun main() = runBlocking {    // Creates a blocking coroutine that executes in current thread (main)
+
+        println("Main program starts: ${Thread.currentThread().name}")  // main thread
+
+        val deferredJob: Deferred<Unit> = async   // Thread: main
+        {
+            println("Fake work starts: ${Thread.currentThread().name}")     // Thread: main
+            delay(1000)   // Coroutine is suspended but Thread: main is free (not blocked)
+            println("Fake work finished: ${Thread.currentThread().name}") // Thread: main
+            15
+        }
+
+        val num: Int = deferredJob.await()  // main thread: wait for coroutine to finish and return data
+
+        println("Main program ends: ${Thread.currentThread().name}")    // main thread
+    }
+
+    suspend fun myOwnSuspendingFunc() {
+        delay(1000)     // do something
+    }
+---------------------------------------------------------------------------------------------------------------------
+5. Coroutine Scope and Context
+---------------------------------------------------------------------------------------------------------------------
+
+Using CoroutineScope helps manage the lifecycle of coroutines, ensuring they are properly canceled when no longer
+needed.
+
+    import kotlinx.coroutines.*
+
+    fun main() = runBlocking {
+        val job = launch {
+            repeat(5) { i ->
+                println("Coroutine $i is working")
+                delay(500L)
+            }
+        }
+        delay(2000L)  // Delay for a while
+        println("Main: I'm tired of waiting!")
+        job.cancelAndJoin()  // Cancels the job and waits for its completion
+        println("Main: Now I can quit.")
+    }
+
+Common Use Cases
+---------------------------------------------------------------------------------------------------------------------
+Network Requests: Fetch data from an API without blocking the main thread.
+
+Database Operations: Perform database read/write operations asynchronously.
+
+Background Processing: Run long-running tasks like file I/O or heavy computations in the background.
+Benefits of Coroutines
+
+Readability: Coroutines allow you to write asynchronous code in a sequential style.
+
+Efficiency: Lightweight compared to traditional threads, with lower memory overhead.
+
+Structured Concurrency: Helps manage the lifecycle of coroutines, ensuring proper cancellation and resource management.
+
+Coroutine Context and Dispatchers
+---------------------------------------------------------------------------------------------------------------------
+Dispatchers.Main: For UI-related work (main thread).
+
+Dispatchers.IO: For I/O operations like network or disk access.
+
+Dispatchers.Default: For CPU-intensive work.
+
+Dispatchers.Unconfined: Runs the coroutine in the caller thread until the first suspension point.
+
+
+import kotlinx.coroutines.*
+
+fun main() = runBlocking {
+    launch(Dispatchers.Main) {
+        println("Running on the main thread")
+    }
+    launch(Dispatchers.IO) {
+        println("Running on the IO dispatcher")
+    }
+    launch(Dispatchers.Default) {
+        println("Running on the default dispatcher")
+    }
+    launch(Dispatchers.Unconfined) {
+        println("Running on the unconfined dispatcher")
+    }
+}
+Kotlin coroutines provide a flexible and efficient way to handle asynchronous programming.
+They enable writing clean, readable, and maintainable code for concurrent tasks, making them an essential tool for
+modern Kotlin development.
+
+
+
+References:
+----------------------
+https://chatgpt.com
+https://www.youtube.com/watch?v=lmRzRKIsn1g
+
+
+
+

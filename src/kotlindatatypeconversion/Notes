@@ -1,0 +1,70 @@
+In Kotlin, converting a string to an integer can be done using several built-in functions.
+Here are a few common methods:
+
+Using toInt()
+
+    This method converts the string to an integer.
+
+    If the string does not represent a valid integer, it throws a NumberFormatException.
+
+    kotlin
+    Copy code
+    val str = "123"
+    val num = str.toInt()
+    println(num) // Outputs: 123
+
+Using toIntOrNull()
+
+        This method converts the string to an integer, returning null if the string does not represent a valid
+        integer. This is safer because it avoids exceptions.
+
+        kotlin
+        Copy code
+        val str = "123"
+        val num: Int? = str.toIntOrNull()
+        println(num) // Outputs: 123
+
+        val invalidStr = "abc"
+        val invalidNum: Int? = invalidStr.toIntOrNull()
+        println(invalidNum) // Outputs: null
+
+Using Java's Integer.parseInt()
+
+        Since Kotlin is fully interoperable with Java, you can also use Java's Integer.parseInt() method.
+
+        kotlin
+        Copy code
+        val str = "123"
+        val num = Integer.parseInt(str)
+        println(num) // Outputs: 123
+
+Handling Exceptions
+
+        When using methods that throw exceptions, you can handle them using try-catch blocks:
+
+        kotlin
+        Copy code
+        val str = "123"
+        try {
+            val num = str.toInt()
+            println(num) // Outputs: 123
+        } catch (e: NumberFormatException) {
+            println("Invalid number format")
+        }
+
+        val invalidStr = "abc"
+        try {
+            val invalidNum = invalidStr.toInt()
+            println(invalidNum)
+        } catch (e: NumberFormatException) {
+            println("Invalid number format") // Outputs: Invalid number format
+        }
+Summary
+
+Use toInt() for straightforward conversions where you are confident the string is a valid integer.
+
+Use toIntOrNull() for safer conversions that handle invalid formats gracefully.
+
+Use Java's Integer.parseInt() if you're more comfortable with Java's standard library or for interoperability with existing Java code.
+
+Handle potential exceptions with try-catch blocks when using methods that can throw exceptions.
